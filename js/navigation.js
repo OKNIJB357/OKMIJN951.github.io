@@ -1,39 +1,33 @@
 // 导航功能
 function initNavigation() {
-    // 智能导航栏隐藏/显示逻辑 (替换原有滚动监听代码)
-let lastScrollY = window.scrollY; // 记录上一次滚动位置
-const scrollThreshold = 150;
-//滚动距离的敏感度阈值 (像素)，数值越小越敏感
-
-window.addEventListener('scroll', function() {
-    const currentScrollY = window.scrollY;
-    const nav = document.querySelector('nav');
+    // 智能导航栏隐藏/显示逻辑
+    let lastScrollY = window.scrollY;
+    const scrollThreshold = 150;
     
-    // 1. 判断滚动方向（向下滚动：当前值 > 上一次值）
-    const isScrollingDown = currentScrollY > lastScrollY;
-    
-    // 2. 判断是否超过“在顶部”的极小阈值
-    const isAtTop = currentScrollY < 10;
-    
-    // 使用 requestAnimationFrame 确保动画流畅，避免性能问题
-    window.requestAnimationFrame(() => {
-        if (isAtTop) {
-            // 情况A：在页面顶部 -> 确保导航栏完全显示且无隐藏状态
-            nav.classList.remove('nav-hidden');
-        } else if (isScrollingDown && currentScrollY > scrollThreshold) {
-            // 情况B：明确向下滚动且超过敏感阈值 -> 添加隐藏类，触发CSS动画
-            nav.classList.add('nav-hidden');
-        } else {
-            // 情况C：向上滚动 -> 移除隐藏类，导航栏滑回显示
-            nav.classList.remove('nav-hidden');
-        }
+    window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        const nav = document.querySelector('nav');
+        
+        const isScrollingDown = currentScrollY > lastScrollY;
+        const isAtTop = currentScrollY < 10;
+        
+        window.requestAnimationFrame(() => {
+            if (isAtTop) {
+                nav.classList.remove('nav-hidden');
+            } else if (isScrollingDown && currentScrollY > scrollThreshold) {
+                nav.classList.add('nav-hidden');
+            } else {
+                nav.classList.remove('nav-hidden');
+            }
+        });
+        
+        lastScrollY = currentScrollY;
     });
     
-    // 更新上一次滚动位置记录，用于下次比较
-    lastScrollY = currentScrollY;
-});
-    
     // 平滑滚动
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const navbar = document.querySelector('nav');
+    
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const href = this.getAttribute('href');

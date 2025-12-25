@@ -18,7 +18,11 @@
     <!-- 导航栏 -->
     <nav>
         <div class="container nav-container">
-            <div class="logo">设计工作室</div>
+            <!-- Logo图片 -->
+            <div class="logo-image-container">
+                <img src="https://img.tukuppt.com/png_preview/00/17/55/9Mboh3HAW6.jpg!/fw/780" alt="设计工作室Logo" class="logo-image">
+                <div class="logo">设计工作室</div>
+            </div>
             <div class="nav-links">
                 <a href="#about">关于</a>
                 <a href="#work">作品</a>
@@ -27,23 +31,29 @@
         </div>
     </nav>
 
-        <!-- 首页横幅 -->
+    <!-- 首页横幅 -->
     <section class="hero">
+        <div class="hero-overlay"></div>
         <div class="container hero-content">
             <h1>用设计创造价值</h1>
             <p>我们专注于品牌设计、视觉识别和包装设计，帮助企业建立独特的品牌形象</p>
         </div>
     </section>
 
-        <!-- 关于我们板块 -->
+    <!-- 关于我们板块 -->
     <section id="about" class="about">
         <div class="container">
-           <br/>
-           <br/>
+            <br/>
+            <br/>
             <h2 class="section-title">关于我们</h2>
             <div class="about-content">
-                <p>设计工作室成立于2015年，由一群热爱创意设计的专业人士组成。我们专注于品牌设计、LOGO设计、VI系统设计和包装设计，致力于为客户提供全方位的视觉解决方案。</p>
-                <p>我们的设计理念是"简约而不简单"，在追求视觉美感的同时，更注重设计的实用性和品牌价值传递。十年来，我们已为超过200家企业和品牌提供了设计服务。</p>
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="设计工作室团队">
+                </div>
+                <div class="about-text">
+                    <p>设计工作室成立于2015年，由一群热爱创意设计的专业人士组成。我们专注于品牌设计、LOGO设计、VI系统设计和包装设计，致力于为客户提供全方位的视觉解决方案。</p>
+                    <p>我们的设计理念是"简约而不简单"，在追求视觉美感的同时，更注重设计的实用性和品牌价值传递。十年来，我们已为超过200家企业和品牌提供了设计服务。</p>
+                </div>
             </div>
         </div>
     </section>
@@ -59,10 +69,11 @@
                 <button class="filter-btn" data-filter="other">其他</button>
             </div>
             <div class="portfolio-grid">
-                <!-- ========== 品牌设计 (默认显示) ========== -->
-                <div class="portfolio-item" data-category="brand">
+                <!-- 为每个作品添加data-attributes，用于模态框 -->
+                <div class="portfolio-item" data-category="brand" 
+                     data-design-thought="通过简约的线条和现代的色彩搭配，展现科技企业的创新精神与专业形象。我们采用了模块化设计理念，确保品牌在不同场景下都有一致的视觉体验。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="企业品牌识别系统设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="企业品牌识别系统设计">
                         <div class="portfolio-overlay">
                             <h3>科技企业品牌焕新</h3>
                             <p>整套视觉识别系统与品牌语言构建</p>
@@ -70,9 +81,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="brand">
+                <div class="portfolio-item" data-category="brand"
+                     data-design-thought="以自然元素为灵感来源，结合环保理念，创造了一个既现代又具有生态感的全新品牌形象。色彩上选用大地色系，材质选择可回收材料，体现了品牌的环保承诺。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="生活方式品牌设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="生活方式品牌设计">
                         <div class="portfolio-overlay">
                             <h3>环保生活品牌全案</h3>
                             <p>从理念到市场落地的完整品牌塑造</p>
@@ -80,9 +92,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="brand">
+                <div class="portfolio-item" data-category="brand"
+                     data-design-thought="结合金融行业的专业性与科技行业的创新性，创造了兼具稳重与活力的视觉系统。通过动态数据可视化元素，展现金融科技的前瞻性。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="金融品牌升级设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="金融品牌升级设计">
                         <div class="portfolio-overlay">
                             <h3>金融科技品牌升级</h3>
                             <p>建立专业、可靠且创新的品牌形象</p>
@@ -90,9 +103,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="brand">
+                <div class="portfolio-item" data-category="brand"
+                     data-design-thought="以咖啡豆的形态为设计起点，结合现代极简主义风格，打造了一个既保留咖啡文化传统又具有当代审美体验的品牌视觉系统。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="餐饮品牌设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="餐饮品牌设计">
                         <div class="portfolio-overlay">
                             <h3>精品咖啡品牌创建</h3>
                             <p>打造具有独特空间体验的连锁品牌</p>
@@ -101,10 +115,11 @@
                     </a>
                 </div>
 
-                <!-- ========== 海报设计 (初始隐藏) ========== -->
-                <div class="portfolio-item" data-category="poster" style="display: none;">
+                <!-- 海报设计 -->
+                <div class="portfolio-item" data-category="poster"
+                     data-design-thought="运用色彩渐变和动态线条，模拟音乐的节奏感和流动感，创造出视觉上的听觉体验。主视觉元素与品牌活动主题完美契合。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="音乐节海报设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="音乐节海报设计">
                         <div class="portfolio-overlay">
                             <h3>夏季音乐节主视觉</h3>
                             <p>融合声音与色彩的动态视觉表达</p>
@@ -112,9 +127,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="poster" style="display: none;">
+                <div class="portfolio-item" data-category="poster"
+                     data-design-thought="通过解构与重构的视觉手法，表现影片中的情感冲突与人物内心世界。单色调的使用强化了影片的戏剧张力。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="电影海报设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="电影海报设计">
                         <div class="portfolio-overlay">
                             <h3>独立电影概念海报</h3>
                             <p>用视觉叙事传递影片核心情感</p>
@@ -122,9 +138,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="poster" style="display: none;">
+                <div class="portfolio-item" data-category="poster"
+                     data-design-thought="运用强烈的视觉对比和象征性图像，唤起观众对环境保护的共鸣。设计上采用破坏与修复的对比手法，传达环保紧迫性。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1602576666092-3d9d5d5f4c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="公益海报设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="公益海报设计">
                         <div class="portfolio-overlay">
                             <h3>环境保护公益海报</h3>
                             <p>用强烈的视觉隐喻引发公众关注</p>
@@ -132,9 +149,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="poster" style="display: none;">
+                <div class="portfolio-item" data-category="poster"
+                     data-design-thought="通过几何抽象与具象元素的结合，展现当代艺术的多元性。系列化设计确保了视觉连贯性，同时每张海报都有独特的艺术表达。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="展览海报设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="展览海报设计">
                         <div class="portfolio-overlay">
                             <h3>当代艺术展海报系列</h3>
                             <p>解构与重组，诠释展览主题</p>
@@ -143,10 +161,11 @@
                     </a>
                 </div>
 
-                <!-- ========== 标志设计 (初始隐藏) ========== -->
-                <div class="portfolio-item" data-category="logo" style="display: none;">
+                <!-- 标志设计 -->
+                <div class="portfolio-item" data-category="logo"
+                     data-design-thought="以公司首字母为基础，通过几何化处理和负空间运用，创造出既简洁又富有层次感的现代标志。体现了科技公司的创新与精准。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="极简字母标志设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="极简字母标志设计">
                         <div class="portfolio-overlay">
                             <h3>初创科技公司标志</h3>
                             <p>以字母为基石的极简现代标识</p>
@@ -154,9 +173,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="logo" style="display: none;">
+                <div class="portfolio-item" data-category="logo"
+                     data-design-thought="抽象化的山峰图形，既表现了户外探险的精神，又保持了标志的简洁易记性。动态的线条传达出运动感与探索欲。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="图形符号标志设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="图形符号标志设计">
                         <div class="portfolio-overlay">
                             <h3>户外品牌图形标志</h3>
                             <p>抽象山峰图形传递探索精神</p>
@@ -164,9 +184,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="logo" style="display: none;">
+                <div class="portfolio-item" data-category="logo"
+                     data-design-thought="融合传统徽章元素与现代简约风格，既体现了啤酒酿造的传统工艺，又展现了品牌的当代审美。金色与深蓝的色彩搭配彰显品质感。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1612178532326-dc3c8b612b67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="徽章式标志设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="徽章式标志设计">
                         <div class="portfolio-overlay">
                             <h3>精酿啤酒厂徽章标志</h3>
                             <p>融合传统工艺与现代美学的徽章</p>
@@ -174,9 +195,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="logo" style="display: none;">
+                <div class="portfolio-item" data-category="logo"
+                     data-design-thought="设计了可变的标志系统，适应不同数字平台的显示需求。核心图形保持一致性，细节元素可随应用场景变化，体现了媒体的多元性。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="动态标志设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="动态标志设计">
                         <div class="portfolio-overlay">
                             <h3>媒体平台动态标志</h3>
                             <p>适用于多场景的灵活标识系统</p>
@@ -185,10 +207,11 @@
                     </a>
                 </div>
 
-                <!-- ========== 其他设计 (初始隐藏) ========== -->
-                <div class="portfolio-item" data-category="other" style="display: none;">
+                <!-- 其他设计 -->
+                <div class="portfolio-item" data-category="other"
+                     data-design-thought="根据小说主题选择特种纸张和印刷工艺，封面设计融入故事元素但不剧透，通过触感与视觉的双重体验增强阅读沉浸感。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="书籍装帧设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="书籍装帧设计">
                         <div class="portfolio-overlay">
                             <h3>文学小说书籍装帧</h3>
                             <p>通过材质与工艺讲述故事</p>
@@ -196,9 +219,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="other" style="display: none;">
+                <div class="portfolio-item" data-category="other"
+                     data-design-thought="采用可降解材料和极简设计，减少包装的环境影响同时保持产品高端感。色彩系统源自天然植物色素，与品牌环保理念一致。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="产品包装设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="产品包装设计">
                         <div class="portfolio-overlay">
                             <h3>可持续美妆产品包装</h3>
                             <p>环保材料与简约视觉的融合</p>
@@ -206,9 +230,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="other" style="display: none;">
+                <div class="portfolio-item" data-category="other"
+                     data-design-thought="将复杂数据转化为直观的视觉语言，通过色彩编码和图形化处理，使年度报告既专业又易于理解。交互式图表增强了阅读体验。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="信息图表设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="信息图表设计">
                         <div class="portfolio-overlay">
                             <h3>年度数据报告视觉化</h3>
                             <p>将复杂数据转化为清晰易懂的图表</p>
@@ -216,9 +241,10 @@
                         </div>
                     </a>
                 </div>
-                <div class="portfolio-item" data-category="other" style="display: none;">
+                <div class="portfolio-item" data-category="other"
+                     data-design-thought="平衡了信息密度与视觉清晰度，通过分层设计让复杂数据有序呈现。色彩系统引导用户关注重点指标，交互设计提升了使用效率。">
                     <a href="#" class="portfolio-link">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="网站界面设计">
+                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="网站界面设计">
                         <div class="portfolio-overlay">
                             <h3>金融仪表盘界面设计</h3>
                             <p>复杂信息的功能性与视觉平衡</p>
@@ -230,23 +256,31 @@
         </div>
     </section>
 
-     <!-- 联系我们板块 -->
+    <!-- 联系我们板块 -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">联系我们</h2>
-            <div class="contact-info">
-                <p>地址：北京市朝阳区设计产业园A座1208室</p>
-                <p>电话：010-88889999</p>
-                <p>邮箱：contact@design-studio.com</p>
-                <p>工作时间：周一至周五 9:00-18:00</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>地址：北京市朝阳区设计产业园A座1208室</p>
+                    <p>电话：010-88889999</p>
+                    <p>邮箱：contact@design-studio.com</p>
+                    <p>工作时间：周一至周五 9:00-18:00</p>
+                </div>
             </div>
         </div>
     </section>
-
-        <!-- 页脚 -->
+<br>
+    <!-- 页脚 - 已修改为21:9的横幅背景 -->
     <footer>
+        <!-- 页脚背景图覆盖层 -->
+        <div class="footer-overlay"></div>
         <div class="container">
-            <div class="logo">设计工作室</div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="footer-logo">
+                <!-- 去掉Logo图片，只保留文字 -->
+                <div class="logo">设计工作室</div>
+            </div>
             <div class="social-links">
                 <a href="#"><i class="fab fa-behance"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>

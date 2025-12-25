@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initPortfolio();
     initScrollAnimations();
+    initTitleAnimations();
     initLazyLoading();
 });
 
@@ -25,7 +26,28 @@ function initScrollAnimations() {
     }
     
     window.addEventListener('scroll', checkScroll);
-    checkScroll(); // 初始检查
+    checkScroll();
+}
+
+// 标题横线动画
+function initTitleAnimations() {
+    const sectionTitles = document.querySelectorAll('.section-title');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.5,
+        rootMargin: '-50px 0px -50px 0px'
+    });
+    
+    sectionTitles.forEach(title => {
+        observer.observe(title);
+    });
 }
 
 // 图片懒加载
