@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计工作室 | 创意品牌设计</title>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 外部样式表 -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">设计工作室</div>
+            <div class="nav-links">
+                <a href="#about">关于</a>
+                <a href="#work">作品</a>
+                <a href="#contact">联系</a>
+            </div>
+        </div>
+    </nav>
+
+        <!-- 首页横幅 -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>用设计创造价值</h1>
+            <p>我们专注于品牌设计、视觉识别和包装设计，帮助企业建立独特的品牌形象</p>
+        </div>
+    </section>
+
+        <!-- 关于我们板块 -->
+    <section id="about" class="about">
+        <div class="container">
+           <br/>
+           <br/>
+            <h2 class="section-title">关于我们</h2>
+            <div class="about-content">
+                <p>设计工作室成立于2015年，由一群热爱创意设计的专业人士组成。我们专注于品牌设计、LOGO设计、VI系统设计和包装设计，致力于为客户提供全方位的视觉解决方案。</p>
+                <p>我们的设计理念是"简约而不简单"，在追求视觉美感的同时，更注重设计的实用性和品牌价值传递。十年来，我们已为超过200家企业和品牌提供了设计服务。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集板块 -->
+    <section id="work" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">精选作品</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="brand">品牌设计</button>
+                <button class="filter-btn" data-filter="poster">海报设计</button>
+                <button class="filter-btn" data-filter="logo">标志设计</button>
+                <button class="filter-btn" data-filter="other">其他</button>
+            </div>
+            <div class="portfolio-grid">
+                <!-- ========== 品牌设计 (默认显示) ========== -->
+                <div class="portfolio-item" data-category="brand">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="企业品牌识别系统设计">
+                        <div class="portfolio-overlay">
+                            <h3>科技企业品牌焕新</h3>
+                            <p>整套视觉识别系统与品牌语言构建</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="brand">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="生活方式品牌设计">
+                        <div class="portfolio-overlay">
+                            <h3>环保生活品牌全案</h3>
+                            <p>从理念到市场落地的完整品牌塑造</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="brand">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="金融品牌升级设计">
+                        <div class="portfolio-overlay">
+                            <h3>金融科技品牌升级</h3>
+                            <p>建立专业、可靠且创新的品牌形象</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="brand">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="餐饮品牌设计">
+                        <div class="portfolio-overlay">
+                            <h3>精品咖啡品牌创建</h3>
+                            <p>打造具有独特空间体验的连锁品牌</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- ========== 海报设计 (初始隐藏) ========== -->
+                <div class="portfolio-item" data-category="poster" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="音乐节海报设计">
+                        <div class="portfolio-overlay">
+                            <h3>夏季音乐节主视觉</h3>
+                            <p>融合声音与色彩的动态视觉表达</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="poster" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="电影海报设计">
+                        <div class="portfolio-overlay">
+                            <h3>独立电影概念海报</h3>
+                            <p>用视觉叙事传递影片核心情感</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="poster" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1602576666092-3d9d5d5f4c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="公益海报设计">
+                        <div class="portfolio-overlay">
+                            <h3>环境保护公益海报</h3>
+                            <p>用强烈的视觉隐喻引发公众关注</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="poster" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="展览海报设计">
+                        <div class="portfolio-overlay">
+                            <h3>当代艺术展海报系列</h3>
+                            <p>解构与重组，诠释展览主题</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- ========== 标志设计 (初始隐藏) ========== -->
+                <div class="portfolio-item" data-category="logo" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="极简字母标志设计">
+                        <div class="portfolio-overlay">
+                            <h3>初创科技公司标志</h3>
+                            <p>以字母为基石的极简现代标识</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="logo" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1611262588024-d12430b98920?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="图形符号标志设计">
+                        <div class="portfolio-overlay">
+                            <h3>户外品牌图形标志</h3>
+                            <p>抽象山峰图形传递探索精神</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="logo" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1612178532326-dc3c8b612b67?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="徽章式标志设计">
+                        <div class="portfolio-overlay">
+                            <h3>精酿啤酒厂徽章标志</h3>
+                            <p>融合传统工艺与现代美学的徽章</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="logo" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1614732414444-096e5f1122d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="动态标志设计">
+                        <div class="portfolio-overlay">
+                            <h3>媒体平台动态标志</h3>
+                            <p>适用于多场景的灵活标识系统</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- ========== 其他设计 (初始隐藏) ========== -->
+                <div class="portfolio-item" data-category="other" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="书籍装帧设计">
+                        <div class="portfolio-overlay">
+                            <h3>文学小说书籍装帧</h3>
+                            <p>通过材质与工艺讲述故事</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="other" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="产品包装设计">
+                        <div class="portfolio-overlay">
+                            <h3>可持续美妆产品包装</h3>
+                            <p>环保材料与简约视觉的融合</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="other" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="信息图表设计">
+                        <div class="portfolio-overlay">
+                            <h3>年度数据报告视觉化</h3>
+                            <p>将复杂数据转化为清晰易懂的图表</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="portfolio-item" data-category="other" style="display: none;">
+                    <a href="#" class="portfolio-link">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="网站界面设计">
+                        <div class="portfolio-overlay">
+                            <h3>金融仪表盘界面设计</h3>
+                            <p>复杂信息的功能性与视觉平衡</p>
+                            <div class="btn">查看详情</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- 联系我们板块 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <div class="contact-info">
+                <p>地址：北京市朝阳区设计产业园A座1208室</p>
+                <p>电话：010-88889999</p>
+                <p>邮箱：contact@design-studio.com</p>
+                <p>工作时间：周一至周五 9:00-18:00</p>
+            </div>
+        </div>
+    </section>
+
+        <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="logo">设计工作室</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-behance"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-dribbble"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="copyright">© 2023 设计工作室. 保留所有权利</div>
+        </div>
+    </footer>
+
+    <!-- 外部JavaScript -->
+    <script src="js/main.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/portfolio.js" defer></script>
+</body>
+</html>
