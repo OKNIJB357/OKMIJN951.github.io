@@ -1,0 +1,406 @@
+/* 
+ * animations.css - 动画和交互样式文件
+ * 目的：提供网站所有微交互动画、过渡效果和加载动画
+ */
+
+/* ==================== 导航栏下划线动画 ==================== */
+/* 目的：为导航链接添加优雅的下划线悬停效果 */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0.5px;
+    background-color: #222;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.nav-links a:hover {
+    color: #222;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    opacity: 1;
+}
+
+/* ==================== 图片悬停效果 ==================== */
+/* 目的：为作品图片添加微妙的缩放悬停效果 */
+.portfolio-item:hover img {
+    transform: scale(1.04);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+/* ==================== 统一的按钮动画系统 ==================== */
+/* 目的：为所有按钮创建一致的下划线悬停动画 */
+
+/* 分类按钮 - 带边框的小圆角矩形 */
+.filter-btn {
+    position: relative;
+    display: inline-block;
+    padding: 10px 24px;
+    color: #333;
+    background: transparent;
+    font-size: 28px; /* 原来的14px放大两倍 */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    border: 1px solid #333;
+    border-radius: 6px;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    min-height: 42px; /* 触摸友好 */
+}
+
+/* 其他按钮 - 无边框 */
+.portfolio-overlay .btn,
+.category-more-link a,
+.baidu-link a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 24px;
+    color: #333;
+    background: transparent;
+    font-size: 28px; /* 原来的14px放大两倍 */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    border: none;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* 按钮下划线效果 */
+.filter-btn::after,
+.portfolio-overlay .btn::after,
+.category-more-link a::after,
+.baidu-link a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1.5px;
+    background-color: #333;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+/* ==================== 查看详情按钮特殊样式 ==================== */
+/* 目的：白色文字的模态框查看按钮 */
+.portfolio-overlay .btn {
+    padding: 9px 20px;
+    color: #fff;
+    font-size: 24px; /* 原来的12px放大两倍 */
+    margin-top: 9px;
+}
+
+.portfolio-overlay .btn::after {
+    background-color: #fff;
+    height: 1px;
+}
+
+.portfolio-overlay .btn:hover {
+    color: #fff;
+    background: transparent;
+    transform: translateY(-2px); /* 轻微上浮效果 */
+}
+
+.portfolio-overlay .btn:hover::after {
+    width: 100%;
+    opacity: 1;
+}
+
+/* ==================== 分类按钮悬停效果 ==================== */
+.filter-btn:hover:not(.active) {
+    background-color: #f5f5f5;
+    transform: translateY(-2px); /* 轻微上浮效果 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    letter-spacing: 1.2px;
+}
+
+.filter-btn:hover:not(.active)::after {
+    width: 100%;
+    opacity: 1;
+}
+
+/* ==================== 分类按钮激活状态 ==================== */
+.filter-btn.active {
+    background-color: #333;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+    border-color: #333;
+}
+
+.filter-btn.active::after {
+    display: none; /* 激活状态不显示下划线 */
+}
+
+/* ==================== 查看更多链接样式 ==================== */
+.category-more-link a {
+    padding: 10px 0;
+    color: #333;
+    font-size: 28px; /* 原来的14px放大两倍 */
+    font-weight: 500;
+    /* 中文内容使用中文无衬线字体 */
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+}
+
+.category-more-link a:hover {
+    color: #222;
+    background: transparent;
+    letter-spacing: 1.2px;
+    transform: translateY(-2px);
+}
+
+.category-more-link a:hover::after {
+    width: 100%;
+    opacity: 1;
+}
+
+/* ==================== 按钮点击反馈 ==================== */
+/* 目的：为所有按钮添加微妙的点击反馈 */
+.portfolio-overlay .btn:active,
+.category-more-link a:active,
+.baidu-link a:active {
+    transform: translateY(1px) !important;
+    transition-duration: 0.1s; /* 点击动画更快 */
+}
+
+.filter-btn:active:not(.active) {
+    transform: translateY(1px);
+    transition-duration: 0.1s;
+}
+
+/* ==================== 移动端触摸优化 ==================== */
+/* 目的：在触摸设备上优化悬停效果，使用:active状态替代 */
+@media (hover: none) and (pointer: coarse) {
+    /* 导航链接触摸优化 */
+    .nav-links a {
+        transition: all 0.2s ease !important;
+    }
+    
+    .nav-links a:active {
+        background-color: rgba(0, 0, 0, 0.05) !important;
+        transform: scale(0.98) !important;
+    }
+    
+    /* 分类按钮触摸优化 */
+    .filter-btn:hover:not(.active) {
+        background-color: transparent;
+        transform: none;
+        box-shadow: none;
+        letter-spacing: 1px;
+    }
+    
+    .filter-btn:active:not(.active) {
+        background-color: #f5f5f5 !important;
+        transform: scale(0.96) !important; /* 触摸设备使用缩放效果 */
+        transition: all 0.1s ease !important;
+    }
+    
+    .filter-btn.active:active {
+        transform: scale(0.98) !important;
+        transition: all 0.1s ease !important;
+    }
+    
+    /* 作品项触摸优化 */
+    .portfolio-item:active {
+        transform: scale(0.99) !important;
+        transition: transform 0.1s ease !important;
+    }
+    
+    .portfolio-overlay .btn:hover {
+        transform: none;
+    }
+    
+    .portfolio-overlay .btn:active {
+        transform: scale(0.95) !important;
+        background: rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    .category-more-link a:hover,
+    .baidu-link a:hover {
+        transform: none !important;
+        letter-spacing: 1.1px;
+    }
+    
+    .category-more-link a:active,
+    .baidu-link a:active {
+        transform: scale(0.98) !important;
+        background: rgba(51, 51, 51, 0.1) !important;
+    }
+    
+    /* 社交链接触摸优化 */
+    .social-links a:active {
+        transform: scale(0.9) !important;
+        background-color: rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    /* 模态框关闭按钮触摸优化 */
+    .modal-close:active {
+        transform: scale(0.95) !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+}
+
+/* ==================== 页面加载动画 ==================== */
+/* 目的：页面加载时创建优雅的淡入上浮动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 首页横幅标题动画 */
+.hero h1 {
+    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 首页横幅段落延迟动画 */
+.hero p {
+    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s both;
+}
+
+/* 首页横幅按钮延迟动画 */
+.hero .btn {
+    animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+}
+
+/* ==================== 滚动显示动画 ==================== */
+/* 目的：元素进入视口时创建淡入上浮动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==================== 链接悬停增强效果 ==================== */
+/* 目的：配合自定义光标系统，增强链接的视觉反馈 */
+
+@media (min-width: 769px) {
+    /* 导航链接悬停增强 */
+    .nav-links a:hover {
+        transform: translateY(-2px);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* 作品链接悬停增强 */
+    .portfolio-link:hover .portfolio-overlay {
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+    
+    .portfolio-link:hover .portfolio-overlay h3 {
+        transform: translateY(-5px);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .portfolio-link:hover .portfolio-overlay .btn {
+        transform: translateY(0) scale(1.05);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* 按钮悬停增强 */
+    .btn:hover,
+    .filter-btn:hover:not(.active) {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* 分类按钮悬停颜色变化 */
+    .filter-btn:hover:not(.active) {
+        background-color: rgba(51, 51, 51, 0.1);
+        color: #222;
+    }
+    
+    /* 查看更多链接悬停增强 */
+    .category-more-link a:hover {
+        letter-spacing: 1.5px;
+        transform: translateY(-3px);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* 模态框关闭按钮悬停增强 */
+    .modal-close:hover {
+        transform: translateY(-2px);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    /* 社交链接悬停增强 */
+    .social-links a:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+}
+
+/* ==================== 联系我们图片样式 ==================== */
+/* 目的：为联系信息图片添加统一的小圆角，无动画效果 */
+.contact-info img {
+    border-radius: 12px; /* 添加小圆角 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 添加轻微阴影增强层次感 */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    /* 取消所有过渡动画 */
+    transition: none !important;
+    transform: none !important;
+}
+
+/* 取消所有悬停效果 */
+.contact-info img:hover {
+    transform: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 移动端图片优化 */
+@media (max-width: 768px) {
+    .contact-info img {
+        max-width: 200px !important;
+        margin: 15px auto !important;
+        border-radius: 8px !important;
+    }
+}
+
+/* 取消触摸效果 */
+@media (hover: none) and (pointer: coarse) {
+    .contact-info img:active {
+        transform: none !important;
+        opacity: 0.9 !important; /* 轻微反馈 */
+    }
+}
