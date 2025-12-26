@@ -197,3 +197,51 @@
 .filter-btn:hover {
     letter-spacing: 1.5px;
 }
+
+/* 移动端动画优化 */
+@media (max-width: 768px) {
+    /* 减少移动端动画强度 */
+    .filter-btn:hover:not(.active) {
+        transform: translateY(-2px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* 移动端减少悬浮缩放 */
+    .portfolio-item:hover img {
+        transform: scale(1.02);
+    }
+    
+    /* 移动端模态框优化 */
+    .modal-content {
+        width: 95%;
+        padding: 30px 20px;
+        max-height: 85vh;
+    }
+    
+    .modal-close {
+        top: 10px;
+        right: 10px;
+        font-size: 1.8rem;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 移动端减少交错动画延迟 */
+    .portfolio-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+}
+
+/* 禁用移动端不必要的动画（性能优化） */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -18,7 +18,7 @@ body {
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 0 200px; /* 左右边界200px */
+    padding: 0 200px; /* 左右边界50px */
 }
 
 /* 基础按钮 */
@@ -46,72 +46,56 @@ a {
     transition: color 0.3s ease;
 }
 
-/* 关于我们部分的图片文字布局 */
-.about-content {
-    display: flex;
-    align-items: stretch; /* 确保图片和文字容器高度相等 */
-    gap: 50px;
-    width: 100%;
-}
-
-.about-image {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 4px;
-    min-height: 400px; /* 最小高度确保对齐 */
-}
-
-.about-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.about-text {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px 0; /* 上下内边距确保与图片对齐 */
-}
-
-.about-text p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-}
-
-.about-text p:last-child {
-    margin-bottom: 0;
-}
-
-/* 响应式设计 */
+/* 响应式设计 - 优化移动端 */
 @media (max-width: 768px) {
     .container {
-        padding: 0 30px; /* 平板端减小左右边界 */
+        padding: 0 20px; /* 移动端减小左右边距 */
     }
     
-    .about-content {
-        flex-direction: column;
-        gap: 30px;
+    /* 移动端字体大小优化 */
+    body {
+        font-size: 15px;
+        line-height: 1.7;
     }
     
-    .about-image {
-        min-height: 300px;
+    /* 移动端按钮优化 */
+    .btn {
+        padding: 10px 20px;
+        font-size: 13px;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 20px; /* 手机端进一步减小左右边界 */
+        padding: 0 16px; /* 超小屏幕进一步减小边距 */
     }
     
-    .about-image {
-        min-height: 250px;
+    body {
+        font-size: 14px;
+    }
+}
+
+/* 移动端触摸友好 */
+@media (hover: none) and (pointer: coarse) {
+    /* 移除移动端不必要的悬停效果 */
+    .nav-links a::after,
+    .portfolio-overlay .btn::after {
+        display: none;
+    }
+    
+    /* 增加触摸目标尺寸 */
+    .nav-links a,
+    .filter-btn,
+    .portfolio-link {
+        min-height: 44px; /* 苹果推荐最小触摸目标尺寸 */
+        display: flex;
+        align-items: center;
+    }
+    
+    /* 提高触摸反馈 */
+    .filter-btn:active,
+    .nav-links a:active {
+        transform: scale(0.98);
+        transition: transform 0.1s;
     }
 }

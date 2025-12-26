@@ -191,6 +191,95 @@ function initPortfolioModal() {
             transform: translateY(1px);
             transition-duration: 0.1s;
         }
+        
+        /* 移动端模态框优化 */
+        @media (max-width: 768px) {
+            .portfolio-modal {
+                padding: 0;
+            }
+            
+            .modal-content {
+                width: 95%;
+                max-width: none;
+                max-height: 85vh;
+                padding: 25px 20px;
+                border-radius: 12px;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                font-size: 1.8rem;
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 50%;
+            }
+            
+            .modal-body h2 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+            
+            .modal-body p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            .design-thought-section h3 {
+                font-size: 1.2rem;
+                margin: 20px 0 10px;
+            }
+            
+            .design-thought {
+                font-size: 0.9rem;
+                line-height: 1.6;
+            }
+            
+            .modal-image-container {
+                margin: 20px -20px;
+            }
+            
+            .modal-image-container img {
+                max-height: 250px;
+                border-radius: 0;
+            }
+            
+            .baidu-link a {
+                padding: 10px 25px;
+                font-size: 14px;
+                width: 100%;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .modal-content {
+                width: 98%;
+                padding: 20px 16px;
+                max-height: 90vh;
+            }
+            
+            .modal-body h2 {
+                font-size: 1.3rem;
+            }
+            
+            .modal-image-container img {
+                max-height: 200px;
+            }
+        }
+        
+        /* 防止移动端模态框滚动穿透 */
+        body.modal-open {
+            overflow: hidden;
+            position: fixed;
+            width: 100%;
+        }
     `;
     
     document.head.appendChild(style);
@@ -235,6 +324,14 @@ function initPortfolioModal() {
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            document.body.classList.add('modal-open'); // 添加类防止滚动穿透
+            
+            // 移动端优化：点击模态框外部关闭
+            modal.querySelector('.modal-overlay').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
         }
     });
     
@@ -245,6 +342,7 @@ function initPortfolioModal() {
     function closeModal() {
         modal.classList.remove('active');
         document.body.style.overflow = 'auto';
+        document.body.classList.remove('modal-open'); // 移除类
     }
     
     // ESC键关闭
