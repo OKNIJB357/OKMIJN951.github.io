@@ -60,18 +60,8 @@ function initNavigation() {
 }
 
 function initMobileMenu() {
-    // 创建移动端菜单按钮
-    const navContainer = document.querySelector('.nav-container');
-    const mobileMenuBtn = document.createElement('button');
-    
-    mobileMenuBtn.innerHTML = '<span></span><span></span><span></span>';
-    mobileMenuBtn.className = 'mobile-menu-btn';
-    mobileMenuBtn.setAttribute('aria-label', '菜单');
-    mobileMenuBtn.setAttribute('aria-expanded', 'false');
-    
-    // 添加到导航栏
-    navContainer.appendChild(mobileMenuBtn);
-    
+    // 直接使用HTML中已有的按钮（不再动态创建）
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     const links = navLinks.querySelectorAll('a');
     
