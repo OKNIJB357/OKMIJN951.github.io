@@ -161,7 +161,7 @@ nav.nav-hidden {
     justify-content: center;
     text-align: center;
     z-index: 2;
-    padding: 20px 50px; /* 添加左右50px边界 */
+    padding: 20px 200px; /* 添加左右50px边界 */
     color: white;
 }
 
@@ -169,7 +169,7 @@ nav.nav-hidden {
 .about,
 .portfolio,
 .contact {
-    padding: 50px 0;
+    padding: 200px 0;
 }
 
 .hero h1 {
@@ -533,7 +533,7 @@ footer .container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 40px 50px; /* 添加左右50px边界 */
+    padding: 40px 200px; /* 添加左右50px边界 */
 }
 
 /* 响应式调整：移动端取消固定背景 */
