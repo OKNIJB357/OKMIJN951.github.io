@@ -1,15 +1,22 @@
-/* ==================== 导航栏核心样式 ==================== */
+/* 
+ * components.css - 组件样式文件
+ * 目的：定义网站所有主要组件的样式，包括导航栏、页脚、作品集等
+ */
+
+/* ==================== 导航栏组件 ==================== */
+/* 目的：创建固定定位的导航栏，支持响应式布局和移动端菜单 */
+
 nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 28px 0;
+    padding: 26px 0;
     background-color: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -17,7 +24,8 @@ nav {
                 padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ==================== 导航栏隐藏状态 ==================== */
+/* 导航栏隐藏状态 */
+/* 目的：滚动时隐藏导航栏，创造沉浸式体验 */
 nav.nav-hidden {
     transform: translateY(-100%);
     opacity: 0;
@@ -30,12 +38,12 @@ nav.nav-hidden {
     align-items: center;
     max-width: none;
     margin: 0;
-    padding: 0 50px; /* 移除内边距，使用外层容器的50px边界 */
+    padding: 0 50px;
     position: relative;
     width: 100%;
 }
 
-/* Logo图片容器 - 更近的间距 */
+/* Logo样式 */
 .logo-image-container {
     margin-right: 4px;
     display: flex;
@@ -47,7 +55,7 @@ nav.nav-hidden {
     height: 40px;
     object-fit: contain;
     display: block;
-    border-radius: 6px; /* 统一小圆角 */
+    border-radius: 6px;
 }
 
 .logo {
@@ -56,25 +64,35 @@ nav.nav-hidden {
     letter-spacing: 0.5px;
     color: #222;
     flex-shrink: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
+/* 桌面端导航链接 */
 .nav-links {
     display: flex;
-    gap: 50px;
+    gap: 48px;
     align-items: center;
     flex-shrink: 0;
 }
 
-/* 响应式调整导航链接间距 */
-@media (max-width: 1024px) {
-    .nav-links {
-        gap: 40px;
-    }
+.nav-links a {
+    font-size: 14px;
+    font-weight: 400;
+    color: #555;
+    letter-spacing: 1.2px;
+    position: relative;
+    transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    padding: 8px 0;
+    white-space: nowrap;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* ==================== 移动端导航菜单样式 ==================== */
+/* ==================== 移动端导航菜单 ==================== */
+/* 目的：在移动设备上提供全屏汉堡菜单，保持与桌面端一致的体验 */
+
 @media (max-width: 768px) {
-    /* 隐藏原有的导航链接，显示汉堡菜单 */
+    /* 隐藏桌面端导航，显示汉堡菜单 */
     .nav-links {
         position: fixed;
         top: 0;
@@ -87,7 +105,7 @@ nav.nav-hidden {
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 40px;
+        gap: 36px;
         transform: translateY(-100%);
         opacity: 0;
         transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
@@ -103,31 +121,31 @@ nav.nav-hidden {
     }
 
     .nav-links a {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         padding: 10px 20px;
         color: #222;
         opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+        transform: translateY(18px);
+        transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                    color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
+    /* 交错动画效果 */
     .nav-links.active a {
         opacity: 1;
         transform: translateY(0);
-        transition-delay: calc(0.1s * var(--i));
-    }
-
-    .nav-links {
-        gap: 30px;
+        transition-delay: calc(0.08s * var(--i));
     }
     
-    .logo-image-container {
-        margin-right: 4px;
+    /* 移动端间距优化 */
+    .nav-links {
+        gap: 28px;
     }
     
     .logo-image {
-        width: 35px;
-        height: 35px;
+        width: 34px;
+        height: 34px;
     }
     
     /* 汉堡菜单按钮 */
@@ -137,8 +155,8 @@ nav.nav-hidden {
         z-index: 1000;
         background: none;
         border: none;
-        width: 30px;
-        height: 20px;
+        width: 28px;
+        height: 18px;
         cursor: pointer;
         padding: 0;
     }
@@ -148,10 +166,11 @@ nav.nav-hidden {
         width: 100%;
         height: 2px;
         background-color: #222;
-        margin: 5px 0;
-        transition: all 0.3s ease;
+        margin: 4px 0;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
+    /* 汉堡菜单动画状态 */
     .mobile-menu-btn.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -161,7 +180,7 @@ nav.nav-hidden {
     }
 
     .mobile-menu-btn.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
+        transform: rotate(-45deg) translate(6px, -5px);
     }
 }
 
@@ -172,24 +191,14 @@ nav.nav-hidden {
     }
 }
 
-.nav-links a {
-    font-size: 15px;
-    font-weight: 400;
-    color: #555;
-    letter-spacing: 1.2px;
-    position: relative;
-    transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    text-decoration: none;
-    padding: 8px 0;
-    white-space: nowrap;
-}
+/* ==================== 首页横幅组件 ==================== */
+/* 目的：创建视觉冲击力强的首页横幅，支持固定背景和响应式布局 */
 
-/* 首页横幅 - 精确4:3比例控制 */
 .hero {
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-bottom: 50px;
+    margin-bottom: 48px;
     
     aspect-ratio: 4/3;
     height: 0;
@@ -204,18 +213,18 @@ nav.nav-hidden {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    border-radius: 8px; /* 添加小圆角 */
+    border-radius: 6px;
 }
 
-/* 响应式调整：移动端取消固定背景 */
+/* 移动端优化：取消固定背景以提升性能 */
 @media (max-width: 768px) {
     .hero {
         background-attachment: scroll;
         aspect-ratio: 4/3;
+        border-radius: 4px;
     }
 }
 
-/* 首页横幅覆盖层 */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -226,7 +235,6 @@ nav.nav-hidden {
     z-index: 1;
 }
 
-/* 首页横幅内容容器 */
 .hero-content {
     position: absolute;
     top: 0;
@@ -239,47 +247,44 @@ nav.nav-hidden {
     justify-content: center;
     text-align: center;
     z-index: 2;
-    padding: 20px 50px; /* 添加左右50px边界 */
+    padding: 20px 50px;
     color: white;
 }
 
-/* 统一内容板块间距 */
-.about,
-.portfolio,
-.contact {
-    padding: 50px 0;
-}
-
 .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    margin-bottom: 20px;
+    font-size: clamp(1.9rem, 5vw, 3.3rem);
+    margin-bottom: 18px;
     font-weight: 400;
     line-height: 1.2;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 .hero p {
-    max-width: 600px;
-    margin: 0 auto 30px;
+    max-width: 580px;
+    margin: 0 auto 28px;
     color: rgba(255, 255, 255, 0.9);
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    /* 中文内容使用中文无衬线字体 */
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
-/* 板块标题 - 5px粗下划线 */
+/* ==================== 板块标题组件 ==================== */
+/* 目的：统一所有内容板块的标题样式和动画效果 */
+
 .section-title {
     text-align: center;
-    margin-bottom: 60px;
-    font-size: 2rem;
+    margin-bottom: 56px;
+    font-size: 1.9rem;
     font-weight: 400;
     position: relative;
-    padding-bottom: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    padding-bottom: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
+/* 标题下划线动画 */
 .section-title::after {
     content: "";
     display: block;
@@ -287,226 +292,73 @@ nav.nav-hidden {
     bottom: 0;
     left: 50%;
     width: 0;
-    height: 5px;
+    height: 4px;
     background-color: #333;
     transform: translateX(-50%);
     opacity: 0;
-    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transition: width 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .section-title.animated::after {
-    width: 80px;
+    width: 70px;
     opacity: 1;
 }
 
-/* 关于我们部分 - 关键修改：图片容器不跟随网格系统，可随意缩放 */
-.about-content {
-    display: flex;
-    align-items: flex-start; /* 顶部对齐 */
-    gap: 50px;
-    width: 100%;
-}
+/* ==================== 作品集组件 ==================== */
+/* 目的：创建响应式的作品展示网格，支持分类筛选和悬停效果 */
 
-/* 文字容器 - 固定宽度，保持布局 */
-.about-text {
-    flex: 1;
-    min-width: 0; /* 允许文字容器收缩 */
-}
-
-.about-text p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-}
-
-.about-text p:last-child {
-    margin-bottom: 0;
-}
-
-/* 关键修改：图片容器 - 不跟随网格，可随意缩放 */
-.about-image-wrapper {
-    flex: 1;
-    position: relative;
-    min-height: 300px; /* 最小高度保证显示 */
-    display: flex;
-    align-items: flex-start; /* 顶部对齐 */
-}
-
-.about-image-container {
-    width: 100%; /* 宽度100%填充容器 */
-    height: auto; /* 关键：高度自动，根据图片比例调整 */
-    display: flex;
-    align-items: center; /* 垂直居中图片 */
-    justify-content: center; /* 水平居中图片 */
-    overflow: hidden;
-    border-radius: 8px; /* 统一小圆角 */
-    background-color: #f9f9f9; /* 添加背景色，当图片比例不一致时显示 */
-    min-height: 300px; /* 最小高度 */
-}
-
-/* 关键修改：图片完整显示，可随意缩放 */
-.about-image-container img {
-    width: 100%; /* 宽度100%填充容器 */
-    height: auto; /* 高度根据图片比例自动调整 */
-    object-fit: contain; /* 关键：contain确保图片完整显示 */
-    display: block;
-    max-width: 100%; /* 确保不超过容器宽度 */
-    max-height: 500px; /* 限制最大高度，避免过大 */
-    /* 移除动画效果 */
-    transition: none;
-}
-
-/* 移除图片悬停动画 */
-.about-image-container:hover img {
-    transform: none; /* 移除缩放效果 */
-}
-
-/* 响应式设计 - 关于我们部分 */
-@media (max-width: 992px) {
-    .about-content {
-        gap: 40px;
-    }
-    
-    .about-image-container {
-        min-height: 280px;
-    }
-}
-
-@media (max-width: 768px) {
-    .about-content {
-        flex-direction: column;
-        gap: 30px;
-    }
-    
-    .about-image-wrapper {
-        height: auto; /* 移动端高度自适应 */
-        min-height: 300px;
-    }
-    
-    .about-image-container {
-        height: auto;
-        min-height: 300px;
-    }
-    
-    .about-image-container img {
-        width: 100%;
-        height: auto;
-        object-fit: contain; /* 移动端仍然保持contain */
-        max-height: 400px; /* 移动端减小最大高度 */
-    }
-    
-    .about-text {
-        padding: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .about-image-container {
-        min-height: 250px;
-    }
-    
-    .about-image-container img {
-        max-height: 350px;
-    }
-}
-
-/* 作品集样式 */
 .portfolio {
-    padding: 100px 0;
+    padding: 96px 0;
 }
 
-/* 作品网格 - 精确4px间距 */
+/* 作品网格 - 桌面端2列，移动端1列 */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 4px;
-    margin-bottom: 40px;
+    gap: 3px;
+    margin-bottom: 36px;
     width: 100%;
 }
 
-/* 修改：移动端改为单列显示 */
+/* 移动端作品网格优化 */
 @media (max-width: 768px) {
     .portfolio-grid {
         grid-template-columns: 1fr;
-        gap: 10px; /* 增加间距，便于触摸操作 */
+        gap: 8px; /* 增加间距便于触摸操作 */
     }
     
     .portfolio-item {
         aspect-ratio: 4/3; /* 移动端使用更适合手机屏幕的比例 */
-        border-radius: 8px; /* 稍微增大圆角 */
-    }
-    
-    /* 调整移动端作品分类按钮间距 */
-    .portfolio-filters {
-        gap: 15px; /* 减小间距以适应小屏幕 */
-        flex-wrap: nowrap;
-        overflow-x: auto; /* 允许横向滚动 */
-        justify-content: flex-start;
-        padding-bottom: 10px;
-        margin-bottom: 30px;
-        -webkit-overflow-scrolling: touch; /* 平滑滚动 */
-    }
-    
-    .filter-btn {
-        flex-shrink: 0; /* 防止按钮缩小 */
-        padding: 10px 18px;
-        font-size: 14px;
-    }
-    
-    /* 移动端悬停效果调整 */
-    .portfolio-item:hover {
-        border-radius: 8px;
-    }
-    
-    .portfolio-overlay {
-        padding: 15px;
-        background-color: rgba(0, 0, 0, 0.85);
-    }
-    
-    .portfolio-overlay h3 {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-    }
-    
-    .portfolio-overlay p {
-        font-size: 0.9rem;
-        margin-bottom: 15px;
-    }
-    
-    .portfolio-overlay .btn {
-        padding: 12px 28px;
-        font-size: 14px;
+        border-radius: 4px;
     }
 }
 
-/* 作品项目 - 精确3:2比例，统一小圆角 */
+/* 作品项目 */
 .portfolio-item {
     position: relative;
     overflow: hidden;
-    border-radius: 6px; /* 统一小圆角 */
+    border-radius: 6px;
     aspect-ratio: 3/2;
     cursor: pointer;
     opacity: 1;
     transform: translateY(0) scale(1);
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                border-radius 0.3s ease;
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-radius 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     width: 100%;
     height: auto;
 }
 
-/* 确保图片完全填充并保持比例 */
 .portfolio-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: block;
 }
 
+/* 作品覆盖层 */
 .portfolio-overlay {
     position: absolute;
     top: 0;
@@ -519,220 +371,123 @@ nav.nav-hidden {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     color: #fff;
     padding: 12px;
     text-align: center;
     box-sizing: border-box;
-    border-radius: 6px; /* 匹配外层圆角 */
+    border-radius: 6px;
 }
 
 .portfolio-overlay h3 {
     margin-bottom: 6px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 500;
     line-height: 1.2;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 .portfolio-overlay p {
     color: #ddd;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     margin-bottom: 8px;
     line-height: 1.3;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    /* 中文内容使用中文无衬线字体 */
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
 /* 悬停效果 */
-.portfolio-item:hover {
-    border-radius: 8px; /* 悬停时稍微增大圆角 */
-}
-
 .portfolio-item:hover img {
-    transform: scale(1.03);
+    transform: scale(1.04);
 }
 
 .portfolio-item:hover .portfolio-overlay {
     opacity: 1;
 }
 
-/* 响应式调整：始终保持4px间距 */
-@media (max-width: 1200px) {
-    .portfolio-grid {
-        gap: 4px;
-    }
-}
-
-@media (max-width: 992px) {
-    .portfolio-grid {
-        gap: 4px;
+/* 移动端悬停效果调整 */
+@media (hover: none) and (pointer: coarse) {
+    .portfolio-overlay {
+        padding: 14px;
+        background-color: rgba(0, 0, 0, 0.85);
     }
     
     .portfolio-overlay h3 {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 7px;
     }
     
     .portfolio-overlay p {
-        font-size: 0.75rem;
-    }
-    
-    .portfolio-overlay {
-        padding: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .portfolio-grid {
-        gap: 4px;
-    }
-    
-    .portfolio-item {
-        border-radius: 4px; /* 移动端减小圆角 */
-    }
-    
-    .portfolio-overlay {
-        padding: 8px;
-    }
-    
-    .portfolio-overlay h3 {
-        font-size: 0.9rem;
-        margin-bottom: 4px;
-    }
-    
-    .portfolio-overlay p {
-        font-size: 0.7rem;
-        margin-bottom: 6px;
-    }
-}
-
-@media (max-width: 576px) {
-    .portfolio-grid {
-        gap: 3px;
-    }
-    
-    .portfolio-overlay h3 {
         font-size: 0.85rem;
-    }
-    
-    .portfolio-overlay p {
-        font-size: 0.65rem;
-    }
-    
-    .portfolio-overlay {
-        padding: 6px;
+        margin-bottom: 14px;
     }
 }
 
-@media (max-width: 400px) {
-    .portfolio-grid {
-        gap: 2px;
-    }
-    
-    .portfolio-item {
-        border-radius: 2px;
-    }
-    
-    .portfolio-overlay h3 {
-        font-size: 0.8rem;
-    }
-    
-    .portfolio-overlay p {
-        display: none; /* 在极小屏幕上隐藏描述文字 */
-    }
-    
-    .portfolio-overlay {
-        padding: 4px;
-    }
-}
+/* ==================== 作品分类筛选 ==================== */
+/* 目的：提供作品分类筛选功能，支持移动端横向滚动 */
 
-/* 作品分类导航 - 修改：分类按钮间距为50px */
 .portfolio-filters {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 50px; /* 分类按钮之间的间距为50px */
-    margin-bottom: 40px;
+    gap: 48px;
+    margin-bottom: 36px;
 }
 
-/* 作品分类容器 */
-.portfolio-category {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* 更多作品链接样式 - 修改：使用与"查看详情"相同的无边框下划线动画 */
-.category-more-link {
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* 响应式调整分类按钮间距 */
-@media (max-width: 992px) {
-    .portfolio-filters {
-        gap: 30px; /* 中等屏幕减小间距 */
-    }
-}
-
+/* 移动端分类筛选优化 */
 @media (max-width: 768px) {
     .portfolio-filters {
-        gap: 20px; /* 平板端间距 */
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 12px;
+        flex-wrap: nowrap; /* 保持横向排列 */
+        overflow-x: auto; /* 允许横向滚动 */
+        justify-content: flex-start; /* 左对齐 */
+        padding-bottom: 8px;
+        margin-bottom: 28px;
+        -webkit-overflow-scrolling: touch; /* 触摸设备平滑滚动 */
     }
     
     .filter-btn {
-        padding: 10px 20px;
-        font-size: 14px;
+        flex-shrink: 0; /* 防止按钮缩小 */
+        padding: 9px 16px;
+        font-size: 13px;
     }
 }
 
 @media (max-width: 576px) {
     .portfolio-filters {
-        gap: 15px; /* 手机端间距 */
+        gap: 12px;
         flex-direction: row;
         flex-wrap: wrap;
     }
     
     .filter-btn {
-        padding: 8px 16px;
-        font-size: 13px;
+        padding: 7px 14px;
+        font-size: 12px;
     }
 }
 
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .category-more-link {
-        margin-top: 40px;
-        margin-bottom: 20px;
-    }
-    
-    .category-more-link a {
-        padding: 10px 0;
-        font-size: 14px;
-    }
+/* 作品分类容器 */
+.portfolio-category {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-@media (max-width: 576px) {
-    .category-more-link {
-        margin-top: 30px;
-        margin-bottom: 15px;
-    }
-    
-    .category-more-link a {
-        padding: 8px 0;
-        font-size: 13px;
-    }
+/* 更多作品链接 */
+.category-more-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    margin-bottom: 28px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* 联系我们板块 - 居中对齐 */
+/* ==================== 联系我们组件 ==================== */
+/* 目的：简洁的联系信息展示 */
 .contact-content {
     display: flex;
     justify-content: center;
@@ -740,27 +495,31 @@ nav.nav-hidden {
 
 .contact-info {
     text-align: center;
-    max-width: 600px;
+    max-width: 580px;
 }
 
 .contact-info p {
-    margin-bottom: 15px;
+    margin-bottom: 14px;
     font-size: 1.1rem;
     line-height: 1.6;
     color: #555;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    /* 中文内容使用中文无衬线字体 */
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
-/* ==================== 页脚样式 ==================== */
+/* ==================== 页脚组件 ==================== */
+/* 目的：创建与首页横幅一致的页脚，提供社交链接和版权信息 */
+
+/* 修改：高度从320px降低30%至224px */
+
 footer {
     position: relative;
     width: 100%;
     overflow: hidden;
-    height: 350px; /* 固定高度 */
-    min-height: 350px; /* 最小高度 */
-    max-height: 350px; /* 最大高度 */
+    height: 224px; /* 降低30%，从320px改为224px */
+    min-height: 224px; /* 同步修改最小高度 */
+    max-height: 224px; /* 同步修改最大高度 */
     
-    /* 与首页横幅相同的背景图片和效果 */
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.3), 
         rgba(0, 0, 0, 0.3)
@@ -774,16 +533,17 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 6px;
 }
 
-/* 页脚覆盖层 - 与首页横幅保持一致 */
+/* 页脚覆盖层 */
 .footer-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); /* 与首页横幅相同的半透明黑色 */
+    background-color: rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
@@ -797,40 +557,25 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px 50px 40px; /* 增加上边距来维持布局 */
+    padding: 40px 50px 28px; /* 调整内边距以适应新高度 */
     height: 100%;
 }
 
-/* 页脚Logo占位符 - 修改：完全隐藏但保留空间 */
+/* 页脚Logo占位符（隐藏但保留布局空间） */
 .footer-logo-placeholder {
-    height: 60px; /* 与原Logo高度一致 */
-    margin-bottom: 40px; /* 保持原有间距 */
+    height: 40px; /* 相应调整高度 */
+    margin-bottom: 28px; /* 相应调整间距 */
     width: 100%;
-    visibility: hidden; /* 隐藏内容但保留空间 */
-    opacity: 0; /* 完全透明 */
-    /* 确保没有任何装饰元素显示 */
+    visibility: hidden;
+    opacity: 0;
 }
 
-.footer-logo-placeholder::after {
-    display: none; /* 移除装饰线 */
-}
-
-/* 或者使用更简单的方案：仅保留空间但不显示任何内容 */
-.footer-logo-placeholder {
-    height: 60px;
-    margin-bottom: 40px;
-    width: 100%;
-    /* 完全透明，不显示任何内容 */
-    background: transparent;
-    border: none;
-}
-
-/* 社交链接居中 */
+/* 社交链接 */
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin: 30px 0; /* 增加上下间距以维持布局 */
+    gap: 18px;
+    margin: 24px 0; /* 调整间距 */
     width: 100%;
     flex-wrap: wrap;
 }
@@ -839,92 +584,147 @@ footer {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 46px;
+    height: 46px;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    transition: all 0.3s;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
 }
 
 .social-links a:hover {
     background-color: rgba(255, 255, 255, 0.25);
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     border-color: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* 版权信息居中 */
+/* 版权信息 */
 .copyright {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.8);
-    margin-top: 30px;
+    margin-top: 24px; /* 调整间距 */
     text-align: center;
-    padding-top: 20px;
+    padding-top: 16px; /* 调整间距 */
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     width: 100%;
-    max-width: 600px;
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    max-width: 580px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* 响应式调整：移动端取消固定背景 */
+/* ==================== 移动端页脚优化 ==================== */
+/* 修改：移动端高度也相应降低30% */
+
 @media (max-width: 768px) {
     footer {
         background-attachment: scroll;
-        height: 300px;
-        min-height: 300px;
-        max-height: 300px;
+        height: 196px; /* 降低30%，从280px改为196px */
+        min-height: 196px; /* 同步修改最小高度 */
+        max-height: 196px; /* 同步修改最大高度 */
+        border-radius: 4px;
     }
     
     .footer-content {
-        padding: 50px 30px 30px;
+        padding: 36px 28px 24px; /* 调整内边距 */
     }
     
     .footer-logo-placeholder {
-        height: 50px;
-        margin-bottom: 30px;
+        height: 36px; /* 相应调整 */
+        margin-bottom: 24px; /* 相应调整 */
     }
     
     .social-links {
-        margin: 25px 0;
+        margin: 20px 0; /* 调整间距 */
     }
     
     .social-links a {
-        width: 45px;
-        height: 45px;
+        width: 42px;
+        height: 42px;
     }
 }
 
 @media (max-width: 480px) {
     footer {
-        height: 250px;
-        min-height: 250px;
-        max-height: 250px;
+        height: 168px; /* 降低30%，从240px改为168px */
+        min-height: 168px; /* 同步修改最小高度 */
+        max-height: 168px; /* 同步修改最大高度 */
     }
     
     .footer-content {
-        padding: 40px 20px 20px;
+        padding: 30px 20px 18px; /* 调整内边距 */
     }
     
     .footer-logo-placeholder {
-        height: 40px;
-        margin-bottom: 25px;
+        height: 32px; /* 相应调整 */
+        margin-bottom: 20px; /* 相应调整 */
     }
     
     .social-links {
-        margin: 20px 0;
-        gap: 15px;
+        margin: 18px 0; /* 调整间距 */
+        gap: 14px;
     }
     
     .social-links a {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
     }
     
     .copyright {
-        margin-top: 20px;
-        padding-top: 15px;
+        margin-top: 18px; /* 调整间距 */
+        padding-top: 14px; /* 调整间距 */
         font-size: 0.8rem;
     }
+}
+
+/* Logo占位符（隐藏但保留布局空间） */
+.footer-logo-placeholder {
+    height: 56px;
+    margin-bottom: 36px;
+    width: 100%;
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* 社交链接 */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin: 28px 0;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.social-links a:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 版权信息 */
+.copyright {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 28px;
+    text-align: center;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 580px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
