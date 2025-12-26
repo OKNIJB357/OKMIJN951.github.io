@@ -18,7 +18,7 @@ body {
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 0 50px; /* 左右边界50px */
+    padding: 0 200px; /* 左右边界200px */
 }
 
 /* 基础按钮 */
