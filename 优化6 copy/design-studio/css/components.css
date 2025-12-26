@@ -1,0 +1,855 @@
+/* ==================== 导航栏核心样式 ==================== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 28px 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ==================== 导航栏隐藏状态 ==================== */
+nav.nav-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: none;
+    margin: 0;
+    padding: 0 50px; /* 移除内边距，使用外层容器的50px边界 */
+    position: relative;
+    width: 100%;
+}
+
+/* Logo图片容器 - 更近的间距 */
+.logo-image-container {
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    display: block;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+    transform: scale(1.05);
+}
+
+/* 原有的文字Logo保持不变 */
+.logo {
+    font-weight: 600;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    color: #222;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* 响应式调整导航链接间距 */
+@media (max-width: 1024px) {
+    .nav-links {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 30px;
+    }
+    
+    .logo-image-container {
+        margin-right: 4px;
+    }
+    
+    .logo-image {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.nav-links a {
+    font-size: 15px;
+    font-weight: 400;
+    color: #555;
+    letter-spacing: 1.2px;
+    position: relative;
+    transition: color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    padding: 8px 0;
+    white-space: nowrap;
+}
+
+/* 首页横幅 - 精确4:3比例控制 */
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 50px;
+    
+    aspect-ratio: 4/3;
+    height: 0;
+    padding-bottom: 75%;
+    
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.3), 
+        rgba(0, 0, 0, 0.3)
+    ), url('https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg');
+    
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* 响应式调整：移动端取消固定背景 */
+@media (max-width: 768px) {
+    .hero {
+        background-attachment: scroll;
+        aspect-ratio: 4/3;
+    }
+}
+
+/* 首页横幅覆盖层 */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* 首页横幅内容容器 */
+.hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+    padding: 20px 200px; /* 添加左右50px边界 */
+    color: white;
+}
+
+/* 统一内容板块间距 */
+.about,
+.portfolio,
+.contact {
+    padding: 50px 0;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+    padding: 0;
+}
+
+/* 板块标题 - 5px粗下划线 */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+    font-size: 2rem;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 5px;
+    background-color: #333;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-title.animated::after {
+    width: 80px;
+    opacity: 1;
+}
+
+/* 作品集样式 */
+.portfolio {
+    padding: 100px 0;
+}
+
+/* 作品网格 - 精确4px间距 */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* 作品项目 - 精确3:2比例 */
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+    aspect-ratio: 3/2;
+    cursor: pointer;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                border-radius 0.3s ease;
+    width: 100%;
+    height: auto;
+}
+
+/* 确保图片完全填充并保持比例 */
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+}
+
+.portfolio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.portfolio-overlay h3 {
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.portfolio-overlay p {
+    color: #ddd;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+/* 悬停效果 */
+.portfolio-item:hover {
+    border-radius: 4px;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.03);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 1;
+}
+
+/* 响应式调整：始终保持4px间距 */
+@media (max-width: 1200px) {
+    .portfolio-grid {
+        gap: 4px;
+    }
+}
+
+@media (max-width: 992px) {
+    .portfolio-grid {
+        gap: 4px;
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 1rem;
+    }
+    
+    .portfolio-overlay p {
+        font-size: 0.75rem;
+    }
+    
+    .portfolio-overlay {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        gap: 4px;
+    }
+    
+    .portfolio-item {
+        border-radius: 1px;
+    }
+    
+    .portfolio-overlay {
+        padding: 8px;
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 0.9rem;
+        margin-bottom: 4px;
+    }
+    
+    .portfolio-overlay p {
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+    }
+}
+
+@media (max-width: 576px) {
+    .portfolio-grid {
+        gap: 3px;
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 0.85rem;
+    }
+    
+    .portfolio-overlay p {
+        font-size: 0.65rem;
+    }
+    
+    .portfolio-overlay {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 400px) {
+    .portfolio-grid {
+        gap: 2px;
+    }
+    
+    .portfolio-item {
+        border-radius: 0;
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 0.8rem;
+    }
+    
+    .portfolio-overlay p {
+        font-size: 0.6rem;
+        line-height: 1.2;
+    }
+    
+    .portfolio-overlay {
+        padding: 4px;
+    }
+}
+
+/* 作品分类导航 - 修改：分类按钮间距为50px */
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px; /* 分类按钮之间的间距为50px */
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 24px; /* 稍微增大按钮内边距 */
+    background-color: transparent;
+    border: 1px solid #333;
+    border-radius: 25px; /* 稍微增大圆角 */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-size: 15px; /* 稍微增大字体 */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.filter-btn.active {
+    background-color: #333;
+    color: #fff;
+}
+
+.filter-btn:hover:not(.active) {
+    background-color: #f5f5f5;
+    transform: translateY(-3px); /* 增加悬停上浮距离 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式调整分类按钮间距 */
+@media (max-width: 992px) {
+    .portfolio-filters {
+        gap: 30px; /* 中等屏幕减小间距 */
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-filters {
+        gap: 20px; /* 平板端间距 */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .portfolio-filters {
+        gap: 15px; /* 手机端间距 */
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+}
+
+/* 联系我们板块 - 居中对齐 */
+.contact-content {
+    display: flex;
+    justify-content: center;
+}
+
+.contact-info {
+    text-align: center;
+    max-width: 600px;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* ==================== 页脚样式 ==================== */
+footer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    
+    /* 21:9 比例控制 */
+    aspect-ratio: 21/9;
+    height: 0;
+    padding-bottom: 42.857%; /* 100 / 21 * 9 = 42.857% */
+    
+    /* 与首页横幅相同的背景图片和效果 */
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.3), 
+        rgba(0, 0, 0, 0.3)
+    ), url('https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg');
+    
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 页脚覆盖层 - 与首页横幅保持一致 */
+.footer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* 与首页横幅相同的半透明黑色 */
+    z-index: 1;
+}
+
+footer .container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 200px; /* 添加左右50px边界 */
+}
+
+/* 响应式调整：移动端取消固定背景 */
+@media (max-width: 768px) {
+    footer {
+        background-attachment: scroll;
+        aspect-ratio: 21/9;
+    }
+    
+    footer .container {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer .container {
+        padding: 20px;
+    }
+}
+
+/* 页脚Logo - 白色文字在深色背景上 */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+    width: 100%;
+}
+
+.footer-logo .logo {
+    font-size: 24px;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 社交链接居中 */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+    width: 100%;
+    flex-wrap: wrap; /* 小屏幕时换行 */
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: all 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.social-links a:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 版权信息居中 */
+.copyright {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 30px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 600px; /* 限制最大宽度，确保在小屏幕上也能居中 */
+}
+
+/* ==================== 移动端优化 ==================== */
+
+/* 1. 导航栏移动端优化 */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    /* 移动端导航栏高度减小 */
+    nav {
+        padding: 16px 0;
+    }
+    
+    .logo-image {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .logo {
+        font-size: 15px;
+    }
+    
+    /* 移动端菜单按钮优化 */
+    .mobile-menu-btn {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 移动端导航链接优化 */
+    .nav-links.active {
+        top: 70px; /* 调整下拉菜单位置 */
+        padding: 16px 20px;
+    }
+    
+    .nav-links a {
+        font-size: 16px;
+        padding: 12px 0;
+    }
+}
+
+/* 2. 首页横幅移动端优化 */
+@media (max-width: 768px) {
+    .hero {
+        aspect-ratio: 3/4; /* 移动端使用更适合竖屏的比例 */
+        padding-bottom: 133%; /* 3:4 比例 */
+        margin-bottom: 30px;
+        background-attachment: scroll;
+    }
+    
+    .hero-content {
+        padding: 0 20px;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+        margin-bottom: 16px;
+        line-height: 1.3;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+}
+
+/* 3. 关于我们和联系板块移动端优化 */
+@media (max-width: 768px) {
+    .about,
+    .portfolio,
+    .contact {
+        padding: 40px 0;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        padding-bottom: 16px;
+    }
+    
+    .section-title::after {
+        height: 3px; /* 移动端减少下划线粗细 */
+    }
+    
+    .section-title.animated::after {
+        width: 60px; /* 移动端减少下划线宽度 */
+    }
+}
+
+/* 4. 作品集移动端优化 */
+@media (max-width: 768px) {
+    .portfolio {
+        padding: 60px 0;
+    }
+    
+    /* 移动端改为单列布局 */
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 12px; /* 移动端增加间距便于触摸 */
+    }
+    
+    .portfolio-item {
+        aspect-ratio: 4/3; /* 移动端使用更方形的比例 */
+        border-radius: 8px; /* 增加圆角 */
+    }
+    
+    /* 移动端悬停效果优化 */
+    .portfolio-overlay {
+        opacity: 0.95; /* 移动端默认显示部分透明度 */
+        background-color: rgba(0, 0, 0, 0.85);
+        padding: 20px;
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .portfolio-overlay p {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+    
+    /* 移动端分类按钮优化 */
+    .portfolio-filters {
+        gap: 16px; /* 移动端减少按钮间距 */
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        padding: 8px 20px;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+}
+
+/* 5. 联系我们移动端优化 */
+@media (max-width: 768px) {
+    .contact-info p {
+        font-size: 1rem;
+        margin-bottom: 12px;
+        line-height: 1.5;
+    }
+}
+
+/* 6. 页脚移动端优化 */
+@media (max-width: 768px) {
+    footer {
+        aspect-ratio: 16/9; /* 移动端使用更适合的比例 */
+        padding-bottom: 56.25%; /* 16:9 比例 */
+        background-attachment: scroll;
+    }
+    
+    footer .container {
+        padding: 20px;
+    }
+    
+    .footer-logo .logo {
+        font-size: 20px;
+    }
+    
+    /* 减少移动端页脚空白 */
+    footer .container br {
+        display: none; /* 隐藏多余的换行 */
+    }
+    
+    .social-links {
+        margin: 20px 0;
+        gap: 16px;
+    }
+    
+    .social-links a {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+    
+    .copyright {
+        font-size: 0.8rem;
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+}
+
+/* 超小屏幕优化 (iPhone SE 等) */
+@media (max-width: 375px) {
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero p {
+        font-size: 0.9rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .portfolio-filters {
+        gap: 12px;
+    }
+    
+    .filter-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+    
+    .portfolio-overlay {
+        padding: 16px;
+    }
+    
+    .portfolio-overlay h3 {
+        font-size: 1.1rem;
+    }
+    
+    .portfolio-overlay p {
+        font-size: 0.85rem;
+    }
+}
+
+/* 移动端横屏优化 */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        aspect-ratio: 16/9;
+        padding-bottom: 56.25%;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .portfolio-item {
+        aspect-ratio: 3/2;
+    }
+}
+
+/* 防止移动端文本过小 */
+html {
+    -webkit-text-size-adjust: 100%; /* 防止 iOS 横屏时字体放大 */
+}
