@@ -8,6 +8,7 @@ design-studio/
 │   ├── main.js        # 主JavaScript文件
 │   ├── portfolio.js   # 作品集功能
 │   └── navigation.js  # 导航功能
-└── assets/
-    ├── images/        # 图片资源
-    └── icons/         # 图标资源
+├── assets/
+│  ├── images/        # 图片资源
+│  └── icons/         # 图标资源
+└──public/    #二级网站

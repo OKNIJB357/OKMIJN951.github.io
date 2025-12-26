@@ -30,41 +30,84 @@
     opacity: 1;
 }
 
-/* 查看详情按钮悬停动画 - 无边框，只有下划线 */
-.portfolio-overlay .btn {
+/* 统一的按钮基础样式 - 分类按钮保持小圆角矩形 */
+.filter-btn {
     position: relative;
     display: inline-block;
-    padding: 10px 0;
-    color: #fff;
+    padding: 12px 28px;
+    color: #333;
     background: transparent;
-    font-size: 13px;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     overflow: hidden;
-    border: none;
-    margin-top: 10px;
+    border: 1px solid #333; /* 恢复边框 */
+    border-radius: 6px; /* 小圆角矩形 */
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    /* 移动端优化：提高触摸目标大小 */
+    min-height: 44px;
+    min-width: 44px;
 }
 
-/* 添加下划线效果 - 与导航栏一致但100%展开 */
-.portfolio-overlay .btn::after {
+/* 其他按钮保持无边框 */
+.portfolio-overlay .btn,
+.category-more-link a,
+.baidu-link a {
+    position: relative;
+    display: inline-block;
+    padding: 12px 28px;
+    color: #333;
+    background: transparent;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    border: none; /* 其他按钮无边框 */
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* 统一的按钮下划线效果 */
+.filter-btn::after,
+.portfolio-overlay .btn::after,
+.category-more-link a::after,
+.baidu-link a::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
     width: 0;
-    height: 1px;
-    background-color: #fff;
+    height: 2px;
+    background-color: #333;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transform: translateX(-50%);
     opacity: 0;
 }
 
+/* 查看详情按钮特殊样式 - 白色文字，无边框 */
+.portfolio-overlay .btn {
+    padding: 10px 24px;
+    color: #fff;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.portfolio-overlay .btn::after {
+    background-color: #fff;
+    height: 1px;
+}
+
 .portfolio-overlay .btn:hover {
     color: #fff;
     background: transparent;
+    transform: translateY(-2px);
 }
 
 .portfolio-overlay .btn:hover::after {
@@ -72,29 +115,121 @@
     opacity: 1;
 }
 
-/* 按钮点击效果 */
-.portfolio-overlay .btn:active {
-    transform: translateY(1px);
-    transition-duration: 0.1s;
-}
-
-/* 模态框百度链接动画 - 与品牌设计按钮一致 */
-.baidu-link a {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform: translateY(0);
-}
-
-.baidu-link a:hover {
+/* 分类按钮悬停效果 - 带小圆角矩形 */
+.filter-btn:hover:not(.active) {
+    background-color: #f5f5f5;
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     letter-spacing: 1.5px;
 }
 
+.filter-btn:hover:not(.active)::after {
+    width: 100%;
+    opacity: 1;
+}
+
+/* 分类按钮激活状态 - 带小圆角矩形 */
+.filter-btn.active {
+    background-color: #333;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: #333;
+}
+
+.filter-btn.active::after {
+    display: none;
+}
+
+/* 查看更多链接样式 - 无边框，只有下划线 */
+.category-more-link a {
+    padding: 12px 0;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.category-more-link a:hover {
+    color: #222;
+    background: transparent;
+    letter-spacing: 1.5px;
+    transform: translateY(-2px);
+}
+
+.category-more-link a:hover::after {
+    width: 100%;
+    opacity: 1;
+}
+
+/* 模态框百度链接 - 无边框，只有下划线 */
+.baidu-link a {
+    padding: 15px 0;
+    color: #333;
+    font-size: 16px;
+    letter-spacing: 1.2px;
+    font-weight: 500;
+    /* 移除原有的悬停效果 */
+    transform: translateY(0) !important;
+}
+
+.baidu-link a:hover {
+    color: #222;
+    background: transparent;
+    letter-spacing: 2px;
+    transform: translateY(0) !important;
+}
+
+.baidu-link a:hover::after {
+    width: 100%;
+    opacity: 1;
+}
+
+/* 按钮点击效果 */
+.portfolio-overlay .btn:active,
+.category-more-link a:active,
 .baidu-link a:active {
+    transform: translateY(1px) !important;
+    transition-duration: 0.1s;
+}
+
+.filter-btn:active:not(.active) {
     transform: translateY(1px);
     transition-duration: 0.1s;
+}
+
+/* 移动端优化：调整按钮悬停效果 */
+@media (hover: none) and (pointer: coarse) {
+    /* 触摸设备上，移除悬停效果，使用:active状态 */
+    .filter-btn:hover:not(.active) {
+        background-color: transparent;
+        transform: none;
+        box-shadow: none;
+        letter-spacing: 1px;
+    }
+    
+    .filter-btn:active:not(.active) {
+        background-color: #f5f5f5;
+        transform: scale(0.98);
+    }
+    
+    .portfolio-overlay .btn:hover {
+        transform: none;
+    }
+    
+    .portfolio-overlay .btn:active {
+        transform: scale(0.95);
+    }
+    
+    .category-more-link a:hover,
+    .baidu-link a:hover {
+        transform: none !important;
+        letter-spacing: 1.2px;
+    }
+    
+    .category-more-link a:active,
+    .baidu-link a:active {
+        transform: scale(0.98) !important;
+    }
 }
 
 /* 页面加载动画 */
@@ -140,108 +275,4 @@
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* 分类按钮动画 */
-.filter-btn {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform: translateY(0);
-}
-
-.filter-btn:hover:not(.active) {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.filter-btn:active:not(.active) {
-    transform: translateY(1px);
-    transition-duration: 0.1s;
-}
-
-.filter-btn.active {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.filter-btn.active::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background: rgba(51, 51, 51, 0.1);
-    border-radius: 20px;
-    transform: translate(-50%, -50%) scale(0);
-    animation: pulse 2s infinite;
-    z-index: -1;
-}
-
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(0.95);
-        opacity: 0.7;
-    }
-    70% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0;
-    }
-}
-
-.filter-btn:hover {
-    letter-spacing: 1.5px;
-}
-
-/* 移动端动画优化 */
-@media (max-width: 768px) {
-    /* 减少移动端动画强度 */
-    .filter-btn:hover:not(.active) {
-        transform: translateY(-2px);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    }
-    
-    /* 移动端减少悬浮缩放 */
-    .portfolio-item:hover img {
-        transform: scale(1.02);
-    }
-    
-    /* 移动端模态框优化 */
-    .modal-content {
-        width: 95%;
-        padding: 30px 20px;
-        max-height: 85vh;
-    }
-    
-    .modal-close {
-        top: 10px;
-        right: 10px;
-        font-size: 1.8rem;
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    /* 移动端减少交错动画延迟 */
-    .portfolio-item {
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-}
-
-/* 禁用移动端不必要的动画（性能优化） */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
 }
