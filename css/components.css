@@ -30,7 +30,7 @@ nav.nav-hidden {
     align-items: center;
     max-width: none;
     margin: 0;
-    padding: 0; /* 移除内边距，使用外层容器的50px边界 */
+    padding: 0 50; /* 移除内边距，使用外层容器的50px边界 */
     position: relative;
     width: 100%;
 }
