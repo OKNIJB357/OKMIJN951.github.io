@@ -5,6 +5,7 @@ function initNavigation() {
     const scrollThreshold = 150;
     const nav = document.querySelector('nav');
     const navLinks = document.querySelector('.nav-links');
+    const logoElement = document.querySelector('.logo');
     
     // 获取首页横幅元素
     const heroSection = document.querySelector('.hero');
@@ -32,6 +33,28 @@ function initNavigation() {
             nav.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
             nav.style.backdropFilter = 'blur(10px)';
             nav.style.borderBottom = '1px solid rgba(0, 0, 0, 0.05)';
+        }
+    }
+    
+    // 检查是否到达页面底部
+    function checkBottom() {
+        // 只在桌面端执行
+        if (window.innerWidth <= 768) return;
+        
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        
+        // 判断是否接近底部（距离底部100px以内）
+        const isAtBottom = (scrollTop + windowHeight) >= (documentHeight - 100);
+        
+        if (isAtBottom) {
+            // 到达底部时显示导航栏和箭头
+            nav.classList.remove('nav-hidden');
+            nav.classList.add('at-bottom');
+        } else {
+            // 离开底部时隐藏箭头
+            nav.classList.remove('at-bottom');
         }
     }
     
@@ -98,36 +121,58 @@ function initNavigation() {
     
     // 初始检查
     checkHeroVisibility();
+    checkBottom();
     
     let initialScrollTriggered = false;
+    let autoShowTimer = null;
     
+    // 桌面端和移动端分开处理滚动逻辑
     window.addEventListener('scroll', function() {
         const currentScrollY = window.scrollY;
         
+        // 移动端逻辑
+        if (window.innerWidth <= 768) {
+            // 移动端：更新导航链接
+            updateMobileNavLinks();
+            return;
+        }
+        
+        // 桌面端逻辑
         const isScrollingDown = currentScrollY > lastScrollY;
+        const isScrollingUp = currentScrollY < lastScrollY;
         const isAtTop = currentScrollY < 10;
         
         window.requestAnimationFrame(() => {
             // 检查是否在首页横幅区域
             checkHeroVisibility();
             
+            // 检查是否到达底部
+            checkBottom();
+            
             // 首次滚动时移除初始隐藏类
             if (!initialScrollTriggered && currentScrollY > 5) {
                 nav.classList.remove('initial-hidden');
                 initialScrollTriggered = true;
+                
+                // 清除10秒自动显示定时器
+                if (autoShowTimer) {
+                    clearTimeout(autoShowTimer);
+                    autoShowTimer = null;
+                }
             }
             
-            // 导航栏隐藏/显示逻辑
-            if (isAtTop) {
-                nav.classList.remove('nav-hidden');
-            } else if (isScrollingDown && currentScrollY > scrollThreshold) {
-                nav.classList.add('nav-hidden');
-            } else {
-                nav.classList.remove('nav-hidden');
+            // 如果不是在底部，则执行正常的导航栏显示/隐藏逻辑
+            if (!nav.classList.contains('at-bottom')) {
+                // 如果向上滑动，一直显示导航栏
+                if (isScrollingUp) {
+                    nav.classList.remove('nav-hidden');
+                }
+                // 如果向下滑动，隐藏导航栏
+                else if (isScrollingDown) {
+                    nav.classList.add('nav-hidden');
+                }
             }
-            
-            // 移动端：更新导航链接
-            updateMobileNavLinks();
+            // 如果在底部，导航栏已经由checkBottom函数显示
         });
         
         lastScrollY = currentScrollY;
@@ -161,17 +206,47 @@ function initNavigation() {
         }
     });
     
-    // 页面加载完成后，如果用户没有滚动，设置一个延迟显示导航栏 - 修改为5秒
-    window.addEventListener('load', function() {
-        setTimeout(function() {
-            // 如果用户还没有滚动，显示导航栏文字和logo
-            if (!initialScrollTriggered) {
-                nav.classList.remove('initial-hidden');
+    // 点击logo跳转到首页横屏，只显示文字不显示方框
+    if (logoElement) {
+        logoElement.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // 滚动到首页顶部
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // 设置导航栏为透明状态（只显示文字，不显示方框）
+            nav.classList.add('transparent');
+            nav.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+            nav.style.backdropFilter = 'none';
+            nav.style.borderBottom = '1px solid transparent';
+            
+            // 如果是移动端，更新导航链接
+            if (window.innerWidth <= 768) {
+                updateMobileNavLinks();
             }
-        }, 5000); // 修改为5秒后显示（5000毫秒）
+        });
+    }
+    
+    // 页面加载完成后，如果用户没有滑动，设置10秒延迟显示导航栏（仅桌面端）
+    window.addEventListener('load', function() {
+        // 只有桌面端才执行10秒自动显示
+        if (window.innerWidth > 768) {
+            autoShowTimer = setTimeout(function() {
+                // 如果用户还没有滚动，显示导航栏文字和logo
+                if (!initialScrollTriggered) {
+                    nav.classList.remove('initial-hidden');
+                    initialScrollTriggered = true;
+                }
+            }, 10000); // 10秒后显示（10000毫秒）
+        }
         
         // 初始化移动端导航链接
-        updateMobileNavLinks();
+        if (window.innerWidth <= 768) {
+            updateMobileNavLinks();
+        }
     });
     
     // 点击页面任意位置也可以触发导航栏显示（可选）
@@ -179,14 +254,22 @@ function initNavigation() {
         if (!initialScrollTriggered) {
             nav.classList.remove('initial-hidden');
             initialScrollTriggered = true;
+            
+            // 清除10秒自动显示定时器
+            if (autoShowTimer) {
+                clearTimeout(autoShowTimer);
+                autoShowTimer = null;
+            }
         }
     });
     
-    // 窗口大小改变时，如果是移动端，更新导航链接
+    // 窗口大小改变时
     window.addEventListener('resize', function() {
         // 如果是移动端，更新导航链接
         if (window.innerWidth <= 768) {
             updateMobileNavLinks();
+            // 移动端隐藏箭头
+            nav.classList.remove('at-bottom');
         } else {
             // 桌面端：恢复原始链接
             const originalLinks = `
@@ -195,6 +278,9 @@ function initNavigation() {
                 <a href="#contact">联系</a>
             `;
             navLinks.innerHTML = originalLinks;
+            
+            // 检查是否在底部
+            checkBottom();
         }
     });
 }

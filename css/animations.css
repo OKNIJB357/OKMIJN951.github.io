@@ -236,13 +236,19 @@ nav.transparent .nav-links a:hover {
         animation: none !important;
     }
     
-    /* 简化导航链接交互 */
+    /* 简化导航链接交互 - 取消所有动画 */
     .nav-links a {
         transition: none !important;
     }
     
     .nav-links a::after {
         display: none !important;
+    }
+    
+    /* 取消导航链接悬停效果 */
+    .nav-links a:hover {
+        color: #555 !important; /* 保持原色 */
+        transform: none !important;
     }
     
     /* 简化按钮交互 */
@@ -286,6 +292,15 @@ nav.transparent .nav-links a:hover {
     .portfolio-overlay .btn:active {
         transform: scale(0.95) !important;
         background: rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    /* 取消作品项悬停动画 */
+    .portfolio-item:hover .portfolio-overlay {
+        opacity: 1 !important; /* 保持显示状态 */
+    }
+    
+    .portfolio-item:hover img {
+        transform: none !important;
     }
     
     /* 简化链接交互 */

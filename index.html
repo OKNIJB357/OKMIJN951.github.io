@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/animations.css">
-    <!-- 删除模态框样式引用 -->
-    <!-- <link rel="stylesheet" href="css/modal.css"> -->
     <link rel="stylesheet" href="css/cursor.css"> <!-- 自定义光标样式 -->
 </head>
 
@@ -25,6 +23,10 @@
             <div class="logo-image-container">
                 <img src="https://mmbiz.qpic.cn/sz_mmbiz_png/rxqg3PD859eSjb5XtQiacPrsO58ibq690xgkzicctyGuNZ3ZibAiaZkhHDRibLGwt3JMIhYuXDeSgNzicuOO26hnwiceOg/0?wxfrom=12&wx_fmt=png&tp=wxpic&usePicPrefetch=1" alt="个人设计作品站Logo" class="logo-image" referrerpolicy="no-referrer">
                 <div class="logo">个人设计作品站</div>
+                <!-- 添加箭头元素 -->
+                <div class="nav-arrow">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
             </div>
             <!-- 删除汉堡菜单按钮，导航链接始终显示 -->
             <div class="nav-links">
@@ -36,22 +38,16 @@
     </nav>
     <!-- 其他所有HTML代码保持不变 -->
 
-   <!-- 首页横幅 -->
-<section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-        <div class="hero-content-inner">
-            <div class="hero-title-container">
-                <h1><b>压缩创意，解压价值</b></h1>
-            </div>
-            <div class="hero-description-container">
-                <p>——</p>
-                <p>把每个小方块都变成摇钱树，在巴掌大的地方造个吸金黑洞</p>
-            </div>
+    <!-- 首页横幅 -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1><b>压缩创意，解压价值</b></h1>
+            <p>——</p>
+            <p>把每个小方块都变成摇钱树，在巴掌大的地方造个吸金黑洞</p>
         </div>
-    </div>
-</section>
-    <br>
+    </section>
+
 
     <!-- 关于我板块 -->
     <section id="about" class="about">
@@ -84,273 +80,274 @@
         </div>
     </section>
 
-    <br><br>
-
-    
-
-    <!-- 作品集板块 -->
-    <section id="work" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">部分作品</h2>
-            
-            <!-- 分类筛选按钮 - 移到矩形色块外面 -->
-            <div class="portfolio-filters-container">
-                <div class="portfolio-filters">
-                    <button class="filter-btn active" data-filter="brand">品牌塑造</button>
-                    <button class="filter-btn" data-filter="poster">海报与宣传物料</button>
-                    <button class="filter-btn" data-filter="logo">品牌标志与字体</button>
-                    <button class="filter-btn" data-filter="other">创意类</button>
-                </div>
-            </div>
-            
-            <!-- 添加透明玻璃质感圆角矩形容器 -->
-            <div class="portfolio-container">
-                <!-- 品牌设计 -->
-                <div class="portfolio-category" data-category="brand">
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item" data-category="brand">
-                            <!-- 修改为直接跳转到百度 -->
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="企业品牌识别系统设计">
-                                <div class="portfolio-overlay">
-                                    <h3>科技企业品牌焕新</h3>
-                                    <p>整套视觉识别系统与品牌语言构建</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="brand">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="生活方式品牌设计">
-                                <div class="portfolio-overlay">
-                                    <h3>环保生活品牌全案</h3>
-                                    <p>从理念到市场落地的完整品牌塑造</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="brand">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="金融品牌升级设计">
-                                <div class="portfolio-overlay">
-                                    <h3>金融科技品牌升级</h3>
-                                    <p>建立专业、可靠且创新的品牌形象</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="brand">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="餐饮品牌设计">
-                                <div class="portfolio-overlay">
-                                    <h3>精品咖啡品牌创建</h3>
-                                    <p>打造具有独特空间体验的连锁品牌</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="category-more-link">
-                        <a href="public\design1\index.html" target="_blank" rel="noopener noreferrer">
-                            更多设计作品 → 品牌塑造设计
-                        </a>
+    <!-- 作品集板块容器 -->
+    <div class="section-container" style="margin-bottom: 30px;">
+        <section id="work" class="portfolio">
+            <div class="container">
+                <h2 class="section-title">部分作品</h2>
+                
+                <!-- 分类筛选按钮 - 移到矩形色块外面 -->
+                <div class="portfolio-filters-container">
+                    <div class="portfolio-filters">
+                        <button class="filter-btn active" data-filter="brand">品牌塑造</button>
+                        <button class="filter-btn" data-filter="poster">海报与宣传物料</button>
+                        <button class="filter-btn" data-filter="logo">品牌标志与字体</button>
+                        <button class="filter-btn" data-filter="other">创意类</button>
                     </div>
                 </div>
                 
-                <!-- 海报设计 -->
-                <div class="portfolio-category" data-category="poster" style="display: none;">
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item" data-category="poster">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://mmbiz.qpic.cn/mmbiz_png/rxqg3PD859fZ1h2aFMnwel3Joibt1ziaXMQ9L29Fyq0Kg0Qb8icxT7k6lO1spJZstRccHgOKuVpzeJcfZ2VKWdbBQ/640?wx_fmt=png&wxfrom=13&tp=wxpic#imgIndex=1" alt="音乐节海报设计">
-                                <div class="portfolio-overlay">
-                                    <h3>夏季音乐节主视觉</h3>
-                                    <p>融合声音与色彩的动态视觉表达</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
+                <!-- 添加透明玻璃质感圆角矩形容器 -->
+                <div class="portfolio-container">
+                    <!-- 品牌设计 -->
+                    <div class="portfolio-category" data-category="brand">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="brand">
+                                <!-- 修改为直接跳转到百度 -->
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="企业品牌识别系统设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>科技企业品牌焕新</h3>
+                                        <p>整套视觉识别系统与品牌语言构建</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="brand">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="生活方式品牌设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>环保生活品牌全案</h3>
+                                        <p>从理念到市场落地的完整品牌塑造</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="brand">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="金融品牌升级设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>金融科技品牌升级</h3>
+                                        <p>建立专业、可靠且创新的品牌形象</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="brand">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="餐饮品牌设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>精品咖啡品牌创建</h3>
+                                        <p>打造具有独特空间体验的连锁品牌</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="portfolio-item" data-category="poster">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="电影海报设计">
-                                <div class="portfolio-overlay">
-                                    <h3>独立电影概念海报</h3>
-                                    <p>用视觉叙事传递影片核心情感</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="poster">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="公益海报设计">
-                                <div class="portfolio-overlay">
-                                    <h3>环境保护公益海报</h3>
-                                    <p>用强烈的视觉隐喻引发公众关注</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="poster">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="展览海报设计">
-                                <div class="portfolio-overlay">
-                                    <h3>当代艺术展海报系列</h3>
-                                    <p>解构与重组，诠释展览主题</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="category-more-link">
-                        <a href="public\design2\index.html" target="_blank" rel="noopener noreferrer">
-                            更多设计作品 → 海报与宣传物料设计
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- 标志设计 -->
-                <div class="portfolio-category" data-category="logo" style="display: none;">
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item" data-category="logo">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="极简字母标志设计">
-                                <div class="portfolio-overlay">
-                                    <h3>初创科技公司标志</h3>
-                                    <p>以字母为基石的极简现代标识</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="logo">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="图形符号标志设计">
-                                <div class="portfolio-overlay">
-                                    <h3>户外品牌图形标志</h3>
-                                    <p>抽象山峰图形传递探索精神</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="logo">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="徽章式标志设计">
-                                <div class="portfolio-overlay">
-                                    <h3>精酿啤酒厂徽章标志</h3>
-                                    <p>融合传统工艺与现代美学的徽章</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="logo">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="动态标志设计">
-                                <div class="portfolio-overlay">
-                                    <h3>媒体平台动态标志</h3>
-                                    <p>适用于多场景的灵活标识系统</p>
-                                    <div class="btn">点击</div>
-                                </div>
+                        <div class="category-more-link">
+                            <a href="public\design1\index.html" target="_blank" rel="noopener noreferrer">
+                                更多设计作品 → 品牌塑造设计
                             </a>
                         </div>
                     </div>
-                    <div class="category-more-link">
-                        <a href="public\design3\index.html" target="_blank" rel="noopener noreferrer">
-                            更多设计作品 → 品牌标志与字体设计
-                        </a>
+                    
+                    <!-- 海报设计 -->
+                    <div class="portfolio-category" data-category="poster" style="display: none;">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="poster">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://mmbiz.qpic.cn/mmbiz_png/rxqg3PD859fZ1h2aFMnwel3Joibt1ziaXMQ9L29Fyq0Kg0Qb8icxT7k6lO1spJZstRccHgOKuVpzeJcfZ2VKWdbBQ/640?wx_fmt=png&wxfrom=13&tp=wxpic#imgIndex=1" alt="音乐节海报设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>夏季音乐节主视觉</h3>
+                                        <p>融合声音与色彩的动态视觉表达</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="poster">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="电影海报设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>独立电影概念海报</h3>
+                                        <p>用视觉叙事传递影片核心情感</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="poster">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="公益海报设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>环境保护公益海报</h3>
+                                        <p>用强烈的视觉隐喻引发公众关注</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="poster">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="展览海报设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>当代艺术展海报系列</h3>
+                                        <p>解构与重组，诠释展览主题</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="category-more-link">
+                            <a href="public\design2\index.html" target="_blank" rel="noopener noreferrer">
+                                更多设计作品 → 海报与宣传物料设计
+                            </a>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- 其他设计 -->
-                <div class="portfolio-category" data-category="other" style="display: none;">
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item" data-category="other">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="书籍装帧设计">
-                                <div class="portfolio-overlay">
-                                    <h3>文学小说书籍装帧</h3>
-                                    <p>通过材质与工艺讲述故事</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
+                    
+                    <!-- 标志设计 -->
+                    <div class="portfolio-category" data-category="logo" style="display: none;">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="logo">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="极简字母标志设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>初创科技公司标志</h3>
+                                        <p>以字母为基石的极简现代标识</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="logo">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="图形符号标志设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>户外品牌图形标志</h3>
+                                        <p>抽象山峰图形传递探索精神</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="logo">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="徽章式标志设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>精酿啤酒厂徽章标志</h3>
+                                        <p>融合传统工艺与现代美学的徽章</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="logo">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="动态标志设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>媒体平台动态标志</h3>
+                                        <p>适用于多场景的灵活标识系统</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                        <div class="portfolio-item" data-category="other">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="产品包装设计">
-                                <div class="portfolio-overlay">
-                                    <h3>可持续美妆产品包装</h3>
-                                    <p>环保材料与简约视觉的融合</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="other">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="信息图表设计">
-                                <div class="portfolio-overlay">
-                                    <h3>年度数据报告视觉化</h3>
-                                    <p>将复杂数据转化为清晰易懂的图表</p>
-                                    <div class="btn">点击</div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="portfolio-item" data-category="other">
-                            <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
-                                <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="网站界面设计">
-                                <div class="portfolio-overlay">
-                                    <h3>金融仪表盘界面设计</h3>
-                                    <p>复杂信息的功能性与视觉平衡</p>
-                                    <div class="btn">点击</div>
-                                </div>
+                        <div class="category-more-link">
+                            <a href="public\design3\index.html" target="_blank" rel="noopener noreferrer">
+                                更多设计作品 → 品牌标志与字体设计
                             </a>
                         </div>
                     </div>
-                    <div class="category-more-link">
-                        <a href="public\other4\index.html" target="_blank" rel="noopener noreferrer">
-                            更多设计作品 → 创意类设计
-                        </a>
+                    
+                    <!-- 其他设计 -->
+                    <div class="portfolio-category" data-category="other" style="display: none;">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item" data-category="other">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="书籍装帧设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>文学小说书籍装帧</h3>
+                                        <p>通过材质与工艺讲述故事</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="other">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="产品包装设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>可持续美妆产品包装</h3>
+                                        <p>环保材料与简约视觉的融合</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="other">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="信息图表设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>年度数据报告视觉化</h3>
+                                        <p>将复杂数据转化为清晰易懂的图表</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="portfolio-item" data-category="other">
+                                <a href="https://www.baidu.com" target="_blank" class="portfolio-link">
+                                    <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" alt="网站界面设计">
+                                    <div class="portfolio-overlay">
+                                        <h3>金融仪表盘界面设计</h3>
+                                        <p>复杂信息的功能性与视觉平衡</p>
+                                        <div class="btn">点击</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="category-more-link">
+                            <a href="public\other4\index.html" target="_blank" rel="noopener noreferrer">
+                                更多设计作品 → 创意类设计
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- 联系我们板块 -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">期待您的联系</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <!-- 透明玻璃质感圆角矩形容器 -->
-                    <div class="contact-info-container">
-                        <p><b>现住地址：</b>深圳市龙岗区布吉（可随工作地点变动）</p>
-                        <p><b>电话：</b>18924658319</p>
-                        <p><b>邮箱：</b>875576191@qq.com</p>
-                        <p><b>工作状态：</b>待业中...</p>
-                        <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" height="200" width="200">
+    <!-- 联系我们板块容器 -->
+    <div class="section-container" style="margin-bottom: 30px;">
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">期待您的联系</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <!-- 透明玻璃质感圆角矩形容器 -->
+                        <div class="contact-info-container">
+                            <p><b>现住地址：</b>深圳市龙岗区布吉（可随工作地点变动）</p>
+                            <p><b>电话：</b>18924658319</p>
+                            <p><b>邮箱：</b>875576191@qq.com</p>
+                            <p><b>工作状态：</b>待业中...</p>
+                            <img src="https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg" height="200" width="200">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <br><br><br>
-
-    <!-- 页脚 - 已修改为固定高度 -->
-    <footer>
-        <!-- 页脚背景图覆盖层 -->
-        <div class="footer-overlay"></div>
-        <div class="container footer-content">
-            <!-- 删除文字Logo，保留空容器维持布局 -->
-            <div class="footer-logo-placeholder"></div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-behance"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-dribbble"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <!-- 页脚容器 -->
+    <div class="section-container" style="margin-bottom: 30px;">
+        <!-- 页脚 - 已修改为固定高度 -->
+        <footer>
+            <!-- 页脚背景图覆盖层 -->
+            <div class="footer-overlay"></div>
+            <div class="container footer-content">
+                <!-- 删除文字Logo，保留空容器维持布局 -->
+                <div class="footer-logo-placeholder"></div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-behance"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <!-- 修改：使用footer-copyright类 -->
+                <div class="footer-copyright">© 2025 唐泉个人设计作品站. 保留所有权利</div>
             </div>
-            <!-- 修改：使用footer-copyright类 -->
-            <div class="footer-copyright">© 2025 唐泉个人设计作品站. 保留所有权利</div>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
      <!-- 外部JavaScript -->
     <script src="js/main.js" defer></script>
