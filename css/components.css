@@ -312,32 +312,69 @@ nav.initial-hidden .logo-image {
 
 /* ==================== 移动端首页横幅优化 ==================== */
 @media (max-width: 768px) {
+    /* 移动端取消背景固定 */
     .hero {
-        background-attachment: fixed !important; /* 固定背景图片 */
-        aspect-ratio: 16/9 !important;
-        padding-bottom: 56.25% !important;
+        background-attachment: scroll !important; /* 修改：取消固定 */
+        /* 2:3比例 */
+        aspect-ratio: 2/3 !important;
+        padding-bottom: 150% !important; /* 3/2 = 1.5 = 150% */
         border-radius: 0 !important;
         margin-top: 80px !important; /* 让首页横幅顶部在导航栏底部 */
         margin-bottom: 2rem !important; /* 统一间距 */
+        /* 更换图片 */
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.3), 
+            rgba(0, 0, 0, 0.3)
+        ), url('https://images.pexels.com/photos/35002554/pexels-photo-35002554.jpeg') !important;
     }
     
     .hero-content {
         padding: 0 24px !important;
         justify-content: flex-start !important;
-        padding-top: 80px !important;
+        align-items: flex-start !important; /* 修改：左对齐 */
+        padding-top: 40px !important;
+        text-align: left !important; /* 修改：文字左对齐 */
+        flex-direction: row !important; /* 修改：横向排列 */
     }
     
     .hero h1 {
-        font-size: 2rem !important;
-        margin-bottom: 1rem !important;
+        font-size: 1.5rem !important;
+        margin-bottom: 0 !important;
         line-height: 1.2 !important;
+        flex: 1;
+        padding-right: 20px !important;
     }
     
     .hero p {
-        font-size: 1rem !important;
-        margin-bottom: 1.5rem !important;
-        line-height: 1.5 !important;
-        max-width: 90% !important;
+        font-size: 0.8rem !important;
+        margin-bottom: 0 !important;
+        line-height: 1.2 !important;
+        max-width: 100% !important;
+        flex: 2;
+        text-align: left !important;
+    }
+    
+    /* 将文字纵向排列的调整 */
+    .hero-content {
+        display: flex !important;
+        flex-direction: row !important;
+    }
+    
+    .hero h1,
+    .hero p {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+    }
+    
+    .hero h1 b {
+        display: block !important;
+        margin-bottom: 5px !important;
+    }
+    
+    .hero p {
+        padding-left: 20px !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
     }
 }
 
@@ -514,26 +551,35 @@ nav.initial-hidden .logo-image {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
     }
     
+    /* 修改：遮蔽框只显示三分之一在下方 */
     .portfolio-overlay {
         padding: 1.5rem !important;
         background-color: rgba(0, 0, 0, 0.85) !important;
         border-radius: 8px !important;
+        /* 只显示三分之一在下方 */
+        top: auto !important;
+        bottom: 0 !important;
+        height: 33% !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
     
     .portfolio-overlay h3 {
-        font-size: 1.25rem !important;
-        margin-bottom: 0.5rem !important;
+        font-size: 1.1rem !important;
+        margin-bottom: 0.25rem !important;
+        text-align: center !important;
     }
     
     .portfolio-overlay p {
-        font-size: 0.9rem !important;
-        margin-bottom: 1rem !important;
+        font-size: 0.8rem !important;
+        margin-bottom: 0.5rem !important;
+        text-align: center !important;
     }
     
     .portfolio-overlay .btn {
-        font-size: 0.9rem !important;
-        padding: 8px 16px !important;
-        margin-top: 0.5rem !important;
+        font-size: 0.8rem !important;
+        padding: 6px 12px !important;
+        margin-top: 0.25rem !important;
     }
 }
 
@@ -772,10 +818,11 @@ footer {
     opacity: 0;
 }
 
+/* 修改：社交图标间隔改为40px（桌面端） */
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 18px;
+    gap: 40px; /* 修改：从18px改为40px */
     margin: 24px 0;
     width: 100%;
     flex-wrap: wrap;
@@ -836,9 +883,10 @@ footer {
         margin-bottom: 1.5rem !important;
     }
     
+    /* 修改：移动端社交图标间隔也改为40px */
     .social-links {
         margin: 1.5rem 0 !important;
-        gap: 12px !important;
+        gap: 40px !important; /* 修改：从12px改为40px */
     }
     
     .social-links a {
@@ -867,9 +915,10 @@ footer {
         padding: 1.5rem 20px 1rem !important;
     }
     
+    /* 修改：超小屏幕也保持40px间隔 */
     .social-links {
         margin: 1.25rem 0 !important;
-        gap: 10px !important;
+        gap: 40px !important; /* 保持40px间隔 */
     }
     
     .social-links a {
