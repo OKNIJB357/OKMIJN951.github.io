@@ -875,15 +875,9 @@ footer {
     margin-top: 0 !important; /* 修改：移除之前的顶部外边距 */
     margin-bottom: 40px !important; /* 新增：添加底部外边距40px */
     
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.3), 
-        rgba(0, 0, 0, 0.3)
-    ), url('https://images.pexels.com/photos/28839480/pexels-photo-28839480.jpeg');
-    
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    /* 修改：将图片背景改为浅灰色 */
+    background-color: #8b8b8b !important; /* 浅灰色背景 */
+    background-image: none !important; /* 移除图片背景 */
     
     display: flex;
     align-items: center;
@@ -897,7 +891,8 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
+    /* 修改：将遮罩层颜色改为与背景一致 */
+    background-color: rgba(245, 245, 245, 0.9) !important; /* 浅灰色半透明遮罩 */
     z-index: 1;
 }
 
@@ -938,28 +933,32 @@ footer {
     justify-content: center;
     width: 46px;
     height: 46px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    /* 修改：边框和背景颜色改为深灰色以适应浅灰色背景 */
+    border: 1px solid rgba(51, 51, 51, 0.3) !important;
     border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
+    background-color: rgba(51, 51, 51, 0.1) !important; /* 深灰色半透明背景 */
+    color: #333 !important; /* 深灰色文字 */
 }
 
 .social-links a:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    /* 修改：悬停效果改为深灰色 */
+    background-color: rgba(51, 51, 51, 0.25) !important;
     transform: translateY(-4px);
-    border-color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(51, 51, 51, 0.8) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .footer-copyright {
     font-size: 4px;
-    color: rgba(163, 163, 163, 0.9);
+    /* 修改：版权文字颜色改为深灰色 */
+    color: rgba(51, 51, 51, 0.9) !important;
     font-weight: 300;
     margin-top: 6px;
     padding-top: 10px;
     padding-bottom: 90px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    /* 修改：上边框颜色改为深灰色 */
+    border-top: 1px solid rgba(51, 51, 51, 0.2) !important;
     width: 100%;
     max-width: 800px;
     text-align: center;
@@ -970,13 +969,21 @@ footer {
 /* ==================== 移动端页脚优化 ==================== */
 @media (max-width: 768px) {
     footer {
+        /* 修改：移动端页脚也使用浅灰色背景 */
         background-attachment: scroll !important;
+        background-color: #8b8b8b !important; /* 浅灰色背景 */
+        background-image: none !important; /* 移除图片背景 */
         height: 250px !important;
         min-height: 250px !important;
         max-height: 250px !important;
         border-radius: 0 !important;
         margin-top: 0 !important; /* 修改：移除之前的顶部外边距 */
         margin-bottom: 1rem !important; /* 移动端：底部外边距1rem */
+    }
+    
+    .footer-overlay {
+        /* 修改：移动端遮罩层颜色 */
+        background-color: rgba(245, 245, 245, 0.9) !important; /* 浅灰色半透明遮罩 */
     }
     
     .footer-content {
@@ -998,6 +1005,10 @@ footer {
         width: 36px !important;
         height: 36px !important;
         font-size: 0.9rem !important;
+        /* 修改：移动端社交图标颜色 */
+        border: 1px solid rgba(51, 51, 51, 0.3) !important;
+        background-color: rgba(51, 51, 51, 0.1) !important;
+        color: #333 !important;
         /* 修改：取消动画 */
         transition: none !important;
     }
@@ -1006,8 +1017,8 @@ footer {
     .social-links a:hover {
         transform: none !important;
         box-shadow: none !important;
-        background-color: rgba(255, 255, 255, 0.1) !important;
-        border-color: rgba(255, 255, 255, 0.5) !important;
+        background-color: rgba(51, 51, 51, 0.1) !important;
+        border-color: rgba(51, 51, 51, 0.3) !important;
     }
     
     .footer-copyright {
@@ -1016,6 +1027,9 @@ footer {
         font-size: 0.5rem !important;
         line-height: 1.4 !important;
         max-width: 90% !important;
+        /* 修改：移动端版权文字颜色 */
+        color: rgba(51, 51, 51, 0.9) !important;
+        border-top: 1px solid rgba(51, 51, 51, 0.2) !important;
     }
 }
 
