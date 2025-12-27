@@ -39,7 +39,7 @@ function initNavigation() {
             // 检查是否在首页横幅区域
             checkHeroVisibility();
             
-            // 导航栏隐藏/显示逻辑
+            // 导航栏隐藏/显示逻辑（桌面端逻辑，移动端也适用但影响较小）
             if (isAtTop) {
                 nav.classList.remove('nav-hidden');
             } else if (isScrollingDown && currentScrollY > scrollThreshold) {
@@ -52,7 +52,7 @@ function initNavigation() {
         lastScrollY = currentScrollY;
     });
     
-    // 平滑滚动
+    // 平滑滚动（桌面端和移动端通用）
     const navLinks = document.querySelectorAll('.nav-links a');
     const navbar = document.querySelector('nav');
     
@@ -73,13 +73,10 @@ function initNavigation() {
                         top: targetPosition,
                         behavior: 'smooth'
                     });
+                    
+                    // 移动端：不需要关闭菜单（因为菜单始终显示）
                 }
             }
         });
     });
-    
-    // 移动端：移除移动端菜单初始化，因为导航链接始终显示
-    // 删除 initMobileMenu() 调用
 }
-
-// 删除整个 initMobileMenu 函数

@@ -4,33 +4,23 @@
  */
 
 /* ==================== 全局样式重置 ==================== */
-/* 目的：确保所有浏览器表现一致，消除默认边距和盒模型差异 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* 
- * 字体优化策略：
- * - 英文内容：使用英文字体栈（-apple-system, BlinkMacSystemFont等）
- * - 中文内容：使用中文字体栈（PingFang SC, Microsoft YaHei等）
- * 浏览器会自动根据字符选择字体
- */
 body {
     font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
-    background-color: #f5f5f5; /* 修改：背景改为浅灰色 */
+    background-color: #f5f5f5;
     color: #333;
     line-height: 1.6;
     overflow-x: hidden;
-    -webkit-text-size-adjust: 100%; /* 防止iOS字体自动缩放 */
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1); /* 移动端点击高亮 */
-    position: relative;
-    /* 移除大理石纹理背景 */
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
 }
 
-/* 设置英文优先的无衬线字体 */
-/* 目的：标题、按钮等元素优先使用英文字体，确保英文显示效果 */
+/* 英文优先字体 */
 h1, h2, h3, h4, h5, h6,
 button, input, textarea,
 .logo, .btn,
@@ -40,8 +30,7 @@ button, input, textarea,
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
-/* 设置中文优先的无衬线字体 */
-/* 目的：正文、段落等元素优先使用中文字体，确保中文显示效果 */
+/* 中文优先字体 */
 p, span, a, li,
 .about-text p, 
 .contact-info p,
@@ -52,13 +41,12 @@ p, span, a, li,
     font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* ==================== 全局文字大小加倍 ==================== */
-/* 目的：将所有文字大小变为原来的两倍，但排除页脚 */
+/* ==================== 桌面端全局文字大小 ==================== */
 body:not(footer) {
     font-size: 200% !important;
 }
 
-/* 页脚文字保持原大小 */
+/* 页脚保持原大小 */
 footer,
 footer *,
 footer .social-links a,
@@ -66,11 +54,8 @@ footer .footer-copyright {
     font-size: 100% !important;
 }
 
-/* ==================== 美化滚动条样式 ==================== */
-/* 目的：创建现代化、美观的滚动条，增强用户体验 */
-/* 桌面端滚动条美化 */
+/* ==================== 桌面端滚动条美化 ==================== */
 @media (min-width: 769px) {
-    /* 主页面滚动条 */
     body::-webkit-scrollbar {
         width: 10px;
         background-color: #f5f5f5;
@@ -78,13 +63,13 @@ footer .footer-copyright {
     
     body::-webkit-scrollbar-track {
         background-color: #f5f5f5;
-        border-radius: 10px; /* 修改：圆角统一为10px */
+        border-radius: 10px;
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
     }
     
     body::-webkit-scrollbar-thumb {
         background-color: #333;
-        border-radius: 10px; /* 修改：圆角统一为10px */
+        border-radius: 10px;
         background-image: linear-gradient(
             to bottom,
             rgba(255, 255, 255, 0.2) 0%,
@@ -100,64 +85,13 @@ footer .footer-copyright {
         transform: scale(1.05);
     }
     
-    body::-webkit-scrollbar-thumb:active {
-        background-color: #111;
-    }
-    
-    /* Firefox兼容性 */
     body {
         scrollbar-width: thin;
         scrollbar-color: #333 #f5f5f5;
     }
-    
-    /* 模态框内容滚动条 - 与主页面一致但更细 */
-    .modal-content::-webkit-scrollbar {
-        width: 8px;
-        background-color: rgba(0, 0, 0, 0.05);
-    }
-    
-    .modal-content::-webkit-scrollbar-track {
-        background-color: rgba(0, 0, 0, 0.05);
-        border-radius: 10px; /* 修改：圆角统一为10px */
-    }
-    
-    .modal-content::-webkit-scrollbar-thumb {
-        background-color: rgba(51, 51, 51, 0.6);
-        border-radius: 10px; /* 修改：圆角统一为10px */
-        border: 2px solid rgba(0, 0, 0, 0.05);
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    
-    .modal-content::-webkit-scrollbar-thumb:hover {
-        background-color: rgba(51, 51, 51, 0.8);
-        transform: scale(1.05);
-    }
-    
-    /* 移动端：简化滚动条 */
-    @media (max-width: 768px) {
-        body::-webkit-scrollbar {
-            width: 6px;
-        }
-        
-        body::-webkit-scrollbar-thumb {
-            background-color: rgba(51, 51, 51, 0.4);
-            border-width: 1px;
-        }
-        
-        body::-webkit-scrollbar-thumb:hover {
-            background-color: rgba(51, 51, 51, 0.6);
-            transform: none;
-        }
-        
-        /* 隐藏滚动条箭头 */
-        body::-webkit-scrollbar-button {
-            display: none;
-        }
-    }
 }
 
 /* ==================== 模态框滚动控制 ==================== */
-/* 目的：模态框打开时锁定主页滚动，防止背景滚动 */
 body.modal-open {
     overflow: hidden !important;
     height: 100vh !important;
@@ -170,17 +104,14 @@ body.modal-open {
 }
 
 /* ==================== 响应式容器系统 ==================== */
-/* 目的：提供统一的内容边界和响应式内边距 */
 .container {
     width: 100%;
     max-width: none;
     margin: 0;
-    padding: 0 50px; /* 桌面端左右50px边界 */
+    padding: 0 50px;
 }
 
 /* ==================== 基础组件样式 ==================== */
-/* 目的：定义可重用的基础按钮样式 */
-
 .btn {
     display: inline-block;
     padding: 10px 22px;
@@ -191,7 +122,7 @@ body.modal-open {
     cursor: pointer;
     background: transparent;
     border: none;
-    border-radius: 10px; /* 修改：圆角统一为10px */
+    border-radius: 10px;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
@@ -201,7 +132,6 @@ body.modal-open {
 }
 
 /* ==================== 基础链接样式 ==================== */
-/* 目的：统一所有链接的样式和交互效果 */
 a {
     text-decoration: none;
     color: inherit;
@@ -209,7 +139,6 @@ a {
 }
 
 /* ==================== 关于我们布局 ==================== */
-/* 目的：创建关于我们部分的响应式图文布局 */
 .about-content {
     display: flex;
     align-items: flex-start;
@@ -217,26 +146,22 @@ a {
     width: 100%;
 }
 
-/* 文字容器 */
 .about-text {
     flex: 1;
-    min-width: 0; /* 允许文字容器收缩 */
+    min-width: 0;
 }
 
 .about-text p {
     margin-bottom: 18px;
-    font-size: 28px; /* 修改：与"品牌塑造"按钮相同的28px大小 */
+    font-size: 28px;
     line-height: 1.6;
     color: #555;
-    /* 中文内容使用中文无衬线字体 */
-    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
 .about-text p:last-child {
     margin-bottom: 0;
 }
 
-/* 图片容器 */
 .about-image-wrapper {
     flex: 1;
     position: relative;
@@ -252,180 +177,139 @@ a {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: 10px; /* 修改：圆角统一为10px */
+    border-radius: 10px;
     background-color: #f9f9f9;
     min-height: 280px;
-    aspect-ratio: 1/1; /* 修改：添加1:1固定比例 */
+    aspect-ratio: 1/1;
 }
 
-/* 图片完整显示 */
 .about-image-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 修改：改为cover确保图片填满容器 */
+    object-fit: cover;
     display: block;
     max-width: 100%;
     max-height: 100%;
     transition: none;
-    border-radius: 10px; /* 修改：圆角统一为10px */
+    border-radius: 10px;
 }
 
-/* ==================== 移动端响应式调整 ==================== */
-/* 目的：在移动设备上提供更好的布局和用户体验 */
-
+/* ==================== 移动端响应式设计 ==================== */
 @media (max-width: 768px) {
-    /* 手机端字体缩小至桌面端的40% */
+    /* 移动端全局重置 */
     body:not(footer) {
-        font-size: 80% !important; /* 200% * 40% = 80% */
+        font-size: 16px !important;
+        line-height: 1.5;
     }
     
-    /* 手机端容器内边距优化 */
+    /* 移动端容器优化 */
     .container {
-        padding: 0 20px !important; /* 手机端减小左右边界，强制应用 */
+        padding: 0 24px !important;
     }
     
-    /* 手机端标题大小优化 */
+    /* 移动端标题系统 */
     .section-title {
-        font-size: 1.12rem !important; /* 2.8rem * 40% = 1.12rem */
-        margin-bottom: 16px !important; /* 40px * 40% = 16px */
-        padding-bottom: 4.8px !important; /* 12px * 40% = 4.8px */
+        font-size: 1.75rem !important;
+        margin-bottom: 2.5rem !important;
+        padding-bottom: 0.75rem !important;
     }
     
-    /* 手机端关于我们部分调整 */
+    .section-title::after {
+        width: 40px !important;
+        height: 2px !important;
+    }
+    
+    /* 关于我们移动端优化 */
     .about-container {
-        padding: 12px 8px !important; /* 30px * 40% = 12px, 20px * 40% = 8px */
-        border-radius: 4px !important; /* 10px * 40% = 4px */
-        margin: 0 4px 16px !important; /* 10px * 40% = 4px, 40px * 40% = 16px */
+        padding: 2rem 1.5rem !important;
+        border-radius: 8px !important;
+        margin: 0 0 2rem !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
     }
     
     .about-content {
         flex-direction: column !important;
-        gap: 12.8px !important; /* 32px * 40% = 12.8px */
+        gap: 2.5rem !important;
     }
     
     .about-text p {
-        font-size: 0.76rem !important; /* 1.9rem * 40% = 0.76rem */
-        line-height: 1.8 !important;
-        margin-bottom: 6.4px !important; /* 16px * 40% = 6.4px */
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
     }
     
     .about-image-wrapper {
         width: 100% !important;
-        min-height: 80px !important; /* 200px * 40% = 80px */
+        min-height: 200px !important;
     }
     
     .about-image-container {
-        min-height: 80px !important; /* 200px * 40% = 80px */
-        max-height: 120px !important; /* 300px * 40% = 120px */
-        aspect-ratio: 1/1 !important; /* 修改：保持1:1比例 */
+        min-height: 200px !important;
+        aspect-ratio: 1/1 !important;
     }
     
-    .about-image-container img {
-        max-height: 100% !important;
-        object-fit: cover !important; /* 修改：确保图片填满容器 */
-    }
-    
-    /* 首页横幅内容适配 */
+    /* 首页横幅移动端优化 */
     .hero {
-        margin-bottom: 12px !important; /* 30px * 40% = 12px */
-        border-radius: 4px !important; /* 10px * 40% = 4px */
+        aspect-ratio: 4/3 !important;
+        padding-bottom: 75% !important;
+        border-radius: 0 !important;
+        margin-bottom: 2rem !important;
     }
     
     .hero-content {
-        padding: 6px 8px !important; /* 15px * 40% = 6px, 20px * 40% = 8px */
+        padding: 0 24px !important;
     }
     
-    /* 手机端标题大小优化 */
     .hero h1 {
-        font-size: 1.12rem !important; /* 2.8rem * 40% = 1.12rem */
-        margin-bottom: 6px !important; /* 15px * 40% = 6px */
-        line-height: 1.3 !important;
-        font-weight: 400;
+        font-size: 2rem !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.2 !important;
     }
     
-    /* 手机端段落文本优化 */
     .hero p {
-        font-size: 0.64rem !important; /* 1.6rem * 40% = 0.64rem */
-        margin-bottom: 8px !important; /* 20px * 40% = 8px */
+        font-size: 1rem !important;
+        margin-bottom: 1rem !important;
         line-height: 1.5 !important;
     }
     
-    /* 作品集部分移动端优化 */
+    /* 作品集移动端优化 */
     .portfolio {
-        padding: 24px 0 !important; /* 60px * 40% = 24px */
+        padding: 3rem 0 !important;
     }
     
-    /* 作品集容器移动端优化 */
     .portfolio-container {
-        padding: 12px 8px !important; /* 30px * 40% = 12px, 20px * 40% = 8px */
-        border-radius: 4px !important; /* 10px * 40% = 4px */
-        margin: 0 4px !important; /* 10px * 40% = 4px */
+        padding: 2rem 1.5rem !important;
+        border-radius: 8px !important;
+        margin: 0 !important;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
     }
     
-    /* 联系我们部分移动端优化 */
+    /* 联系我们移动端优化 */
     .contact-info p {
-        font-size: 0.72rem !important; /* 1.8rem * 40% = 0.72rem */
-        line-height: 1.7 !important;
-        margin-bottom: 4.8px !important; /* 12px * 40% = 4.8px */
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
     }
 }
 
+/* 超小屏幕进一步优化 */
 @media (max-width: 480px) {
-    /* 小屏幕设备进一步优化 */
-    body:not(footer) {
-        font-size: 80% !important; /* 保持80% */
-    }
-    
     .container {
-        padding: 0 6.4px !important; /* 16px * 40% = 6.4px */
+        padding: 0 20px !important;
     }
     
     .section-title {
-        font-size: 0.96rem !important; /* 2.4rem * 40% = 0.96rem */
-        margin-bottom: 12px !important; /* 30px * 40% = 12px */
-    }
-    
-    .about-container {
-        padding: 10px 6.4px !important; /* 25px * 40% = 10px, 16px * 40% = 6.4px */
-        border-radius: 4px !important; /* 10px * 40% = 4px */
-    }
-    
-    .about-text p {
-        font-size: 0.68rem !important; /* 1.7rem * 40% = 0.68rem */
-    }
-    
-    .about-image-container {
-        min-height: 72px !important; /* 180px * 40% = 72px */
-        max-height: 100px !important; /* 250px * 40% = 100px */
-        aspect-ratio: 1/1 !important; /* 修改：保持1:1比例 */
-    }
-    
-    .about-image-container img {
-        max-height: 100% !important;
+        font-size: 1.5rem !important;
+        margin-bottom: 2rem !important;
     }
     
     .hero h1 {
-        font-size: 0.88rem !important; /* 2.2rem * 40% = 0.88rem */
+        font-size: 1.75rem !important;
     }
     
-    .hero p {
-        font-size: 0.56rem !important; /* 1.4rem * 40% = 0.56rem */
-    }
-    
-    .portfolio-container {
-        padding: 10px 6.4px !important; /* 25px * 40% = 10px, 16px * 40% = 6.4px */
-        border-radius: 4px !important; /* 10px * 40% = 4px */
-    }
-    
-    .contact-info p {
-        font-size: 0.64rem !important; /* 1.6rem * 40% = 0.64rem */
-    }
-    
-    /* 联系信息图片移动端优化 */
-    .contact-info img {
-        max-width: 72px !important; /* 180px * 40% = 72px */
-        height: auto !important;
-        margin: 6px auto !important; /* 15px * 40% = 6px */
-        border-radius: 4px !important; /* 10px * 40% = 4px */
+    .about-container,
+    .portfolio-container,
+    .contact-info-container {
+        padding: 1.5rem 1.25rem !important;
     }
 }
