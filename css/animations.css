@@ -236,9 +236,35 @@ nav.transparent .nav-links a:hover {
         animation: none !important;
     }
     
-    /* 简化导航链接交互 - 取消所有动画 */
+    /* 导航栏始终保持白色背景，不透明 */
+    nav {
+        background-color: rgba(255, 255, 255, 1) !important;
+        backdrop-filter: none !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        /* 确保导航栏没有transform动画 */
+        transform: none !important;
+    }
+    
+    /* 取消导航栏透明状态的所有动画和效果 */
+    nav.transparent {
+        background-color: rgba(255, 255, 255, 1) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        transform: none !important;
+    }
+    
+    /* 取消导航链接透明效果 */
+    nav.transparent .nav-links a,
+    nav.transparent .logo {
+        color: #555 !important;
+        text-shadow: none !important;
+    }
+    
+    /* 修改：清除移动端导航栏所有交互动画 */
     .nav-links a {
         transition: none !important;
+        animation: none !important;
     }
     
     .nav-links a::after {
@@ -247,13 +273,25 @@ nav.transparent .nav-links a:hover {
     
     /* 取消导航链接悬停效果 */
     .nav-links a:hover {
-        color: #555 !important; /* 保持原色 */
+        color: #555 !important;
         transform: none !important;
+        text-shadow: none !important;
+        opacity: 1 !important;
+        background: transparent !important;
+    }
+    
+    /* 修改：清除移动端导航栏所有悬停下划线动画 */
+    .nav-links a::after {
+        display: none !important;
+        opacity: 0 !important;
+        width: 0 !important;
+        height: 0 !important;
     }
     
     /* 简化按钮交互 */
     .filter-btn {
         transition: none !important;
+        animation: none !important;
     }
     
     .filter-btn::after {
@@ -283,6 +321,9 @@ nav.transparent .nav-links a:hover {
     
     .portfolio-overlay .btn {
         transition: none !important;
+        animation: none !important;
+        /* 移动端：确保按钮没有动画效果 */
+        transform: none !important;
     }
     
     .portfolio-overlay .btn::after {
@@ -296,7 +337,7 @@ nav.transparent .nav-links a:hover {
     
     /* 取消作品项悬停动画 */
     .portfolio-item:hover .portfolio-overlay {
-        opacity: 1 !important; /* 保持显示状态 */
+        opacity: 1 !important;
     }
     
     .portfolio-item:hover img {
@@ -307,6 +348,7 @@ nav.transparent .nav-links a:hover {
     .category-more-link a,
     .baidu-link a {
         transition: none !important;
+        animation: none !important;
     }
     
     .category-more-link a::after,

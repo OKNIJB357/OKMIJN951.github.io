@@ -204,7 +204,29 @@ a {
     
     /* 移动端容器优化 */
     .container {
-        padding: 0 24px !important;
+        padding: 0 16px !important;
+    }
+    
+    /* 导航栏容器调整 */
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 !important;
+    }
+    
+    /* 确保logo容器有足够空间 */
+    .logo-image-container {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        min-width: 0;
+    }
+    
+    /* 确保导航链接不会挤压logo */
+    .nav-links {
+        flex-shrink: 0;
     }
     
     /* 移动端标题系统 */
@@ -221,7 +243,7 @@ a {
     
     /* 关于我们移动端优化 - 统一间距 */
     .about {
-        padding: 2rem 0 !important; /* 统一间距 */
+        padding: 2rem 0 !important;
     }
     
     .about-container {
@@ -251,13 +273,6 @@ a {
         min-height: 200px !important;
         aspect-ratio: 1/1 !important;
     }
-    
-    /* 首页横幅移动端优化 - 已在上方components.css中修改 */
-    /* 这里只需要确保全局样式正确 */
-    
-    /* 作品集移动端优化 - 已在上方components.css中修改，这里只需要确保全局样式正确 */
-    
-    /* 联系我们移动端优化 - 已在上方components.css中修改，这里只需要确保全局样式正确 */
 }
 
 /* 超小屏幕进一步优化 */

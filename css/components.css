@@ -92,7 +92,7 @@ nav.nav-hidden {
 /* 导航箭头样式 - 只在桌面端显示 */
 .nav-arrow {
     position: absolute;
-    right: -25px; /* 修改：从-20px改为-25px，距离文字15px */
+    right: -25px;
     top: 50%;
     transform: translateY(-50%);
     opacity: 0;
@@ -104,14 +104,14 @@ nav.nav-hidden {
 }
 
 .nav-arrow i {
-    font-size: 19.6px; /* 字体高度28px的70% = 19.6px */
+    font-size: 19.6px;
     color: #222;
     animation: arrowPulse 1.5s ease-in-out infinite;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 19.6px; /* 确保高度也是字体高度的70% */
-    line-height: 1; /* 避免行高影响垂直居中 */
+    height: 19.6px;
+    line-height: 1;
 }
 
 @keyframes arrowPulse {
@@ -178,20 +178,23 @@ nav.initial-hidden .nav-arrow {
 
 /* ==================== 移动端导航菜单 ==================== */
 @media (max-width: 768px) {
-    /* 移动端导航栏优化 - 常驻显示，取消隐藏和显示动效，透明度100% */
+    /* 移动端导航栏优化 - 常驻显示，白色背景，不透明，取消所有动画 */
     nav {
-        padding: 20px 0 !important;
-        background-color: rgba(255, 255, 255, 1) !important; /* 修改：透明度100% */
+        padding: 16px 0 !important;
+        background-color: rgba(255, 255, 255, 1) !important;
         backdrop-filter: none !important;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
-        /* 取消所有过渡动画 */
+        /* 取消所有过渡动画，包括transform */
         transition: none !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        /* 确保没有transform相关的动画 */
+        animation: none !important;
     }
     
-    /* 移动端取消初始隐藏效果和所有动效 */
+    /* 修改：取消导航栏所有收缩动画和隐藏效果 */
     nav.initial-hidden,
     nav.transparent,
     nav.nav-hidden,
@@ -199,8 +202,12 @@ nav.initial-hidden .nav-arrow {
         opacity: 1 !important;
         visibility: visible !important;
         transform: none !important;
-        background-color: rgba(255, 255, 255, 1) !important; /* 修改：透明度100% */
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+        background-color: rgba(255, 255, 255, 1) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        /* 确保这些状态也没有动画 */
+        transition: none !important;
+        animation: none !important;
     }
     
     nav.initial-hidden .logo,
@@ -212,44 +219,58 @@ nav.initial-hidden .nav-arrow {
     nav.transparent .logo-image,
     nav.transparent .nav-arrow {
         opacity: 1 !important;
+        transition: none !important;
     }
     
     /* 移动端导航栏透明状态下的样式 */
     nav.transparent {
-        background-color: rgba(255, 255, 255, 1) !important; /* 保持100%不透明 */
+        background-color: rgba(255, 255, 255, 1) !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        /* 取消透明状态的所有动画 */
+        transition: none !important;
     }
     
     nav.transparent .nav-links a,
     nav.transparent .logo {
-        color: #555 !important; /* 保持正常颜色 */
+        color: #555 !important;
         text-shadow: none !important;
+        transition: none !important;
     }
     
     nav.transparent .logo-image {
         filter: none !important;
+        transition: none !important;
     }
     
-    /* 移动端隐藏箭头 */
-    .nav-arrow {
-        display: none !important;
-    }
-    
+    /* 修改：清除移动端导航栏所有交互动画 */
     .nav-container {
-        padding: 0 24px !important;
+        padding: 0 16px !important;
+        /* 确保容器本身没有动画 */
+        transition: none !important;
+        transform: none !important;
     }
     
     .logo-image {
         width: 28px !important;
         height: 28px !important;
+        margin-right: 8px !important;
+        transition: none !important;
     }
     
+    /* 修改：个人设计作品站文字全部展示 */
     .logo {
-        font-size: 18px !important;
-        font-weight: 300;
+        font-size: 16px !important;
+        font-weight: 400;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 120px;
+        overflow: visible !important;
+        text-overflow: clip !important;
+        max-width: none !important;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        transition: none !important;
+        transform: none !important;
     }
     
     /* 移动端导航链接始终显示 */
@@ -261,9 +282,11 @@ nav.initial-hidden .nav-arrow {
         background: transparent !important;
         transform: none !important;
         opacity: 1 !important;
-        gap: 20px;
+        gap: 16px;
         flex-wrap: nowrap;
         margin: 0;
+        flex-shrink: 0;
+        transition: none !important;
     }
     
     .nav-links a {
@@ -277,11 +300,20 @@ nav.initial-hidden .nav-arrow {
         background: transparent !important;
         box-shadow: none !important;
         white-space: nowrap;
-        transition: none !important; /* 取消过渡动画 */
+        /* 清除所有动画和过渡 */
+        transition: none !important;
+        animation: none !important;
     }
     
-    .nav-links a:hover {
-        color: #222;
+    /* 修改：清除移动端导航链接所有悬停效果 */
+    .nav-links a:hover,
+    .nav-links a:active,
+    .nav-links a:focus {
+        color: #555 !important;
+        background: transparent !important;
+        transform: none !important;
+        text-shadow: none !important;
+        opacity: 1 !important;
     }
     
     .nav-links a::after {
@@ -290,6 +322,11 @@ nav.initial-hidden .nav-arrow {
     
     /* 隐藏汉堡菜单按钮 */
     .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    /* 移动端隐藏箭头 */
+    .nav-arrow {
         display: none !important;
     }
 }
@@ -306,12 +343,12 @@ nav.initial-hidden .nav-arrow {
     position: relative;
     width: 100%;
     overflow: hidden;
-    margin-bottom: 40px !important; /* 修改：底部间距从180px改为40px */
+    margin-bottom: 40px !important;
     
     /* 16:9比例 */
     aspect-ratio: 16/9;
     height: 0;
-    padding-bottom: 56.25%; /* 16:9的百分比计算：9/16 = 0.5625 = 56.25% */
+    padding-bottom: 56.25%;
     
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.3), 
@@ -372,14 +409,12 @@ nav.initial-hidden .nav-arrow {
 @media (max-width: 768px) {
     /* 移动端取消背景固定 */
     .hero {
-        background-attachment: scroll !important; /* 修改：取消固定 */
-        /* 2:3比例 */
+        background-attachment: scroll !important;
         aspect-ratio: 2/3 !important;
-        padding-bottom: 150% !important; /* 3/2 = 1.5 = 150% */
+        padding-bottom: 150% !important;
         border-radius: 0 !important;
-        margin-top: 80px !important; /* 让首页横幅顶部在导航栏底部 */
-        margin-bottom: 1rem !important; /* 修改：从2rem改为1rem，统一间距 */
-        /* 更换图片 */
+        margin-top: 80px !important;
+        margin-bottom: 1rem !important;
         background-image: linear-gradient(
             rgba(0, 0, 0, 0.3), 
             rgba(0, 0, 0, 0.3)
@@ -387,52 +422,108 @@ nav.initial-hidden .nav-arrow {
     }
     
     .hero-content {
-        padding: 0 24px !important;
+        padding: 0 20px !important;
         justify-content: flex-start !important;
-        align-items: flex-start !important; /* 修改：左对齐 */
+        align-items: flex-start !important;
         padding-top: 40px !important;
-        text-align: left !important; /* 修改：文字左对齐 */
-        flex-direction: row !important; /* 修改：横向排列 */
+        text-align: left !important;
+        flex-direction: column !important;
+        height: 100%;
+        width: 100%;
     }
     
+    /* 修改：重新设计移动端横幅布局 */
     .hero h1 {
         font-size: 1.5rem !important;
         margin-bottom: 0 !important;
         line-height: 1.2 !important;
-        flex: 1;
-        padding-right: 20px !important;
+        width: 100%;
+        padding-right: 0 !important;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        /* 确保不旋转 */
+        transform: none !important;
     }
     
-    .hero p {
-        font-size: 0.8rem !important;
-        margin-bottom: 0 !important;
-        line-height: 1.2 !important;
-        max-width: 100% !important;
-        flex: 2;
-        text-align: left !important;
-    }
-    
-    /* 将文字纵向排列的调整 */
-    .hero-content {
-        display: flex !important;
-        flex-direction: row !important;
-    }
-    
-    .hero h1,
-    .hero p {
+    /* 修改：让"压缩创意，解压价值"文字垂直排列在左边 */
+    .hero h1 b {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-start !important;
+        writing-mode: vertical-lr; /* 垂直从左到右 */
+        text-orientation: mixed;
+        transform: none !important; /* 取消旋转 */
+        margin-left: 0 !important;
+        margin-right: auto !important; /* 左对齐 */
+        height: 140px !important; /* 固定高度 */
+        line-height: 1.8;
+        font-size: 1.6rem !important;
+        letter-spacing: 6px; /* 稍微减小字间距 */
+        margin-bottom: 15px !important;
+        padding: 5px 0;
+        border-left: 2px solid rgba(255, 255, 255, 0.7);
+        padding-left: 10px;
+        /* 确保文字从上到下排列 */
+        justify-content: flex-start;
+        align-items: flex-start;
     }
     
-    .hero h1 b {
+    /* 修改：将描述文字垂直排列在"压缩创意，解压价值"的右侧 */
+    .hero p {
+        font-size: 0.8rem !important;
+        line-height: 1.5 !important;
+        max-width: 100% !important;
+        text-align: left !important;
+        width: 100%;
+        margin: 0 !important;
+        /* 垂直排列描述文字 */
+        writing-mode: vertical-lr;
+        text-orientation: mixed;
+        height: 140px !important; /* 与标题文字高度一致 */
+        margin-left: 50px !important; /* 与标题文字保持距离 */
+        padding: 5px 0;
+        border-left: 1px solid rgba(255, 255, 255, 0.4); /* 左侧细线 */
+        padding-left: 8px;
+        color: rgba(255, 255, 255, 0.9);
+        /* 确保文字从上到下排列 */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    /* 调整破折号样式 - 隐藏破折号，因为现在布局已经改变 */
+    .hero p:nth-of-type(1) {
+        display: none !important;
+    }
+    
+    /* 调整描述文字样式 */
+    .hero p:nth-of-type(2) {
         display: block !important;
-        margin-bottom: 5px !important;
+        font-size: 0.75rem !important; /* 稍微减小字体 */
+        letter-spacing: 2px; /* 字间距 */
+        line-height: 1.6 !important;
+        color: rgba(255, 255, 255, 0.85);
+        /* 确保文字正确排列 */
+        writing-mode: vertical-lr;
+        text-orientation: mixed;
+    }
+    
+    /* 调整整体布局，让标题和描述在同一行显示 */
+    .hero-content {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        padding-top: 50px !important;
+    }
+    
+    .hero h1 {
+        flex: 0 0 auto !important;
+        width: auto !important;
     }
     
     .hero p {
-        padding-left: 20px !important;
-        border-left: 1px solid rgba(255, 255, 255, 0.3) !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
     }
 }
 
@@ -471,7 +562,7 @@ nav.initial-hidden .nav-arrow {
     background: #ffffff;
     border-radius: 10px;
     padding: 40px 50px;
-    margin: 0 auto 40px !important; /* 修改：底部间距从180px改为40px */
+    margin: 0 auto 40px !important;
     border: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     position: relative;
@@ -484,8 +575,8 @@ nav.initial-hidden .nav-arrow {
 
 /* ==================== 作品集组件 ==================== */
 .portfolio {
-    padding: 96px 0 40px !important; /* 修改：底部间距从180px改为40px */
-    margin-bottom: 40px !important; /* 新增：添加底部外边距40px */
+    padding: 96px 0 40px !important;
+    margin-bottom: 40px !important;
 }
 
 .portfolio-filters-container {
@@ -584,8 +675,8 @@ nav.initial-hidden .nav-arrow {
 /* ==================== 移动端作品集优化 ==================== */
 @media (max-width: 768px) {
     .portfolio {
-        padding: 2rem 0 !important; /* 统一间距 */
-        margin-bottom: 1rem !important; /* 移动端：底部外边距1rem */
+        padding: 2rem 0 !important;
+        margin-bottom: 1rem !important;
     }
     
     .portfolio-filters-container {
@@ -611,49 +702,64 @@ nav.initial-hidden .nav-arrow {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
     }
     
-    /* 修改：遮蔽框只显示三分之一在下方，文字居左，点击放在右边 */
+    /* 修改：遮蔽框只显示三分之一在下方，文字居左 */
     .portfolio-overlay {
         padding: 1.5rem !important;
         background-color: rgba(0, 0, 0, 0.85) !important;
         border-radius: 8px !important;
-        /* 只显示三分之一在下方 */
         top: auto !important;
         bottom: 0 !important;
         height: 33% !important;
-        /* 修改：取消所有动画效果 */
         transition: none !important;
-        opacity: 1 !important; /* 修改：直接显示，不需要悬停 */
-        justify-content: flex-start !important; /* 修改：顶部对齐 */
-        align-items: flex-start !important; /* 修改：左对齐 */
-        text-align: left !important; /* 修改：文字居左 */
+        opacity: 1 !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        text-align: left !important;
     }
     
     .portfolio-overlay h3 {
         font-size: 1.1rem !important;
         margin-bottom: 0.25rem !important;
-        text-align: left !important; /* 修改：居左对齐 */
+        text-align: left !important;
         width: 100%;
     }
     
     .portfolio-overlay p {
         font-size: 0.8rem !important;
         margin-bottom: 0.5rem !important;
-        text-align: left !important; /* 修改：居左对齐 */
+        text-align: left !important;
         width: 100%;
     }
     
+    /* 修改：将"点击"按钮缩小30%，颜色改为灰色，放到图片右上角，取消矩形方框，只保留文字 */
     .portfolio-overlay .btn {
-        font-size: 0.8rem !important;
-        padding: 6px 12px !important;
-        margin-top: 0.25rem !important;
-        /* 修改：按钮放在右边 */
-        align-self: flex-end !important; /* 修改：按钮靠右 */
-        margin-left: auto !important; /* 修改：自动左外边距将其推到右边 */
+        font-size: 0.5rem !important; /* 缩小30%，原为0.7rem */
+        padding: 0 !important;
+        /* 新样式：定位到图片右上角（不是在遮蔽框内） */
+        position: absolute !important;
+        top: 8px !important; /* 稍微调整位置 */
+        right: 8px !important; /* 稍微调整位置 */
+        margin: 0 !important;
+        background: transparent !important; /* 透明背景 */
+        border: none !important; /* 取消边框 */
+        color: #888 !important; /* 修改：改为灰色 */
+        z-index: 10 !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* 文字阴影提高可读性 */
+        font-weight: 500;
+        /* 取消所有动画效果 */
+        transition: none !important;
+        transform: none !important;
+        /* 确保文字清晰可见 */
+        letter-spacing: 0.5px;
     }
     
-    /* 修改：移动端取消所有悬停动画 */
+    /* 确保"点击"按钮在图片上可见，而不是在遮蔽框内 */
+    .portfolio-overlay .btn::before {
+        content: none !important; /* 取消任何伪元素 */
+    }
+    
     .portfolio-item:hover .portfolio-overlay {
-        opacity: 1 !important; /* 保持可见，不需要变化 */
+        opacity: 1 !important;
     }
 }
 
@@ -693,7 +799,6 @@ nav.initial-hidden .nav-arrow {
         background: #f7f7f7 !important;
         color: #555 !important;
         font-weight: 400;
-        /* 修改：取消动画 */
         transition: none !important;
     }
     
@@ -702,7 +807,6 @@ nav.initial-hidden .nav-arrow {
         color: #fff !important;
     }
     
-    /* 修改：取消悬停动画 */
     .filter-btn:hover:not(.active) {
         background: #f7f7f7 !important;
         transform: none !important;
@@ -758,11 +862,9 @@ nav.initial-hidden .nav-arrow {
         border-radius: 8px !important;
         color: #333 !important;
         font-weight: 500;
-        /* 修改：取消动画 */
         transition: none !important;
     }
     
-    /* 修改：取消悬停动画 */
     .category-more-link a:hover {
         background: #f7f7f7 !important;
         color: #333 !important;
@@ -772,11 +874,10 @@ nav.initial-hidden .nav-arrow {
 }
 
 /* ==================== 联系我们组件 ==================== */
-/* 修改：为联系板块添加顶部外边距，确保与部分作品的间距 */
 .contact {
-    padding: 40px 0 40px !important; /* 修改：添加上下各40px的内边距 */
-    margin-top: 0 !important; /* 修改：移除之前的顶部外边距 */
-    margin-bottom: 40px !important; /* 新增：添加底部外边距40px */
+    padding: 40px 0 40px !important;
+    margin-top: 0 !important;
+    margin-bottom: 40px !important;
 }
 
 .contact-content {
@@ -828,8 +929,8 @@ nav.initial-hidden .nav-arrow {
 /* 移动端联系信息容器优化 */
 @media (max-width: 768px) {
     .contact {
-        padding: 1rem 0 !important; /* 统一间距 */
-        margin-bottom: 1rem !important; /* 移动端：底部外边距1rem */
+        padding: 1rem 0 !important;
+        margin-bottom: 1rem !important;
     }
     
     .contact-info-container {
@@ -872,12 +973,11 @@ footer {
     height: 350px;
     min-height: 350px;
     max-height: 350px;
-    margin-top: 0 !important; /* 修改：移除之前的顶部外边距 */
-    margin-bottom: 40px !important; /* 新增：添加底部外边距40px */
+    margin-top: 0 !important;
+    margin-bottom: 40px !important;
     
-    /* 修改：将图片背景改为浅灰色 */
-    background-color: #8b8b8b !important; /* 浅灰色背景 */
-    background-image: none !important; /* 移除图片背景 */
+    background-color: #8b8b8b !important;
+    background-image: none !important;
     
     display: flex;
     align-items: center;
@@ -891,8 +991,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    /* 修改：将遮罩层颜色改为与背景一致 */
-    background-color: rgba(245, 245, 245, 0.9) !important; /* 浅灰色半透明遮罩 */
+    background-color: rgba(245, 245, 245, 0.9) !important;
     z-index: 1;
 }
 
@@ -917,11 +1016,10 @@ footer {
     opacity: 0;
 }
 
-/* 修改：社交图标间隔改为40px（桌面端） */
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 40px; /* 修改：从18px改为40px */
+    gap: 40px;
     margin: 24px 0;
     width: 100%;
     flex-wrap: wrap;
@@ -933,16 +1031,14 @@ footer {
     justify-content: center;
     width: 46px;
     height: 46px;
-    /* 修改：边框和背景颜色改为深灰色以适应浅灰色背景 */
     border: 1px solid rgba(51, 51, 51, 0.3) !important;
     border-radius: 10px;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    background-color: rgba(51, 51, 51, 0.1) !important; /* 深灰色半透明背景 */
-    color: #333 !important; /* 深灰色文字 */
+    background-color: rgba(51, 51, 51, 0.1) !important;
+    color: #333 !important;
 }
 
 .social-links a:hover {
-    /* 修改：悬停效果改为深灰色 */
     background-color: rgba(51, 51, 51, 0.25) !important;
     transform: translateY(-4px);
     border-color: rgba(51, 51, 51, 0.8) !important;
@@ -951,13 +1047,11 @@ footer {
 
 .footer-copyright {
     font-size: 4px;
-    /* 修改：版权文字颜色改为深灰色 */
     color: rgba(51, 51, 51, 0.9) !important;
     font-weight: 300;
     margin-top: 6px;
     padding-top: 10px;
     padding-bottom: 90px;
-    /* 修改：上边框颜色改为深灰色 */
     border-top: 1px solid rgba(51, 51, 51, 0.2) !important;
     width: 100%;
     max-width: 800px;
@@ -969,21 +1063,19 @@ footer {
 /* ==================== 移动端页脚优化 ==================== */
 @media (max-width: 768px) {
     footer {
-        /* 修改：移动端页脚也使用浅灰色背景 */
         background-attachment: scroll !important;
-        background-color: #8b8b8b !important; /* 浅灰色背景 */
-        background-image: none !important; /* 移除图片背景 */
+        background-color: #8b8b8b !important;
+        background-image: none !important;
         height: 250px !important;
         min-height: 250px !important;
         max-height: 250px !important;
         border-radius: 0 !important;
-        margin-top: 0 !important; /* 修改：移除之前的顶部外边距 */
-        margin-bottom: 1rem !important; /* 移动端：底部外边距1rem */
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
     }
     
     .footer-overlay {
-        /* 修改：移动端遮罩层颜色 */
-        background-color: rgba(245, 245, 245, 0.9) !important; /* 浅灰色半透明遮罩 */
+        background-color: rgba(245, 245, 245, 0.9) !important;
     }
     
     .footer-content {
@@ -995,25 +1087,21 @@ footer {
         margin-bottom: 1.5rem !important;
     }
     
-    /* 修改：移动端社交图标间隔也改为40px */
     .social-links {
         margin: 1.5rem 0 !important;
-        gap: 40px !important; /* 修改：从12px改为40px */
+        gap: 40px !important;
     }
     
     .social-links a {
         width: 36px !important;
         height: 36px !important;
         font-size: 0.9rem !important;
-        /* 修改：移动端社交图标颜色 */
         border: 1px solid rgba(51, 51, 51, 0.3) !important;
         background-color: rgba(51, 51, 51, 0.1) !important;
         color: #333 !important;
-        /* 修改：取消动画 */
         transition: none !important;
     }
     
-    /* 修改：取消悬停动画 */
     .social-links a:hover {
         transform: none !important;
         box-shadow: none !important;
@@ -1027,7 +1115,6 @@ footer {
         font-size: 0.5rem !important;
         line-height: 1.4 !important;
         max-width: 90% !important;
-        /* 修改：移动端版权文字颜色 */
         color: rgba(51, 51, 51, 0.9) !important;
         border-top: 1px solid rgba(51, 51, 51, 0.2) !important;
     }
@@ -1044,10 +1131,9 @@ footer {
         padding: 1.5rem 20px 1rem !important;
     }
     
-    /* 修改：超小屏幕也保持40px间隔 */
     .social-links {
         margin: 1.25rem 0 !important;
-        gap: 40px !important; /* 保持40px间隔 */
+        gap: 40px !important;
     }
     
     .social-links a {

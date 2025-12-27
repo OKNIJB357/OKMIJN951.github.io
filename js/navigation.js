@@ -10,11 +10,25 @@ function initNavigation() {
     // 获取首页横幅元素
     const heroSection = document.querySelector('.hero');
     
-    // 初始状态：页面加载时添加初始隐藏类和透明类
-    nav.classList.add('initial-hidden', 'transparent');
+    // 初始状态：页面加载时添加初始隐藏类和透明类（仅桌面端）
+    if (window.innerWidth > 768) {
+        nav.classList.add('initial-hidden', 'transparent');
+    }
     
     // 检查是否在首页横幅区域
     function checkHeroVisibility() {
+        // 移动端直接返回，不执行透明效果
+        if (window.innerWidth <= 768) {
+            // 移动端：始终保持白色背景，不透明
+            nav.classList.remove('transparent');
+            nav.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+            nav.style.backdropFilter = 'none';
+            nav.style.borderBottom = '1px solid rgba(0, 0, 0, 0.08)';
+            // 移动端：确保没有transform动画
+            nav.style.transform = 'none';
+            return;
+        }
+        
         if (!heroSection) return;
         
         const heroRect = heroSection.getBoundingClientRect();
@@ -199,14 +213,12 @@ function initNavigation() {
                         top: targetPosition,
                         behavior: 'smooth'
                     });
-                    
-                    // 移动端：不需要关闭菜单（因为菜单始终显示）
                 }
             }
         }
     });
     
-    // 点击logo跳转到首页横屏，只显示文字不显示方框
+    // 点击logo跳转到首页横屏
     if (logoElement) {
         logoElement.addEventListener('click', function(e) {
             e.preventDefault();
@@ -217,11 +229,21 @@ function initNavigation() {
                 behavior: 'smooth'
             });
             
-            // 设置导航栏为透明状态（只显示文字，不显示方框）
-            nav.classList.add('transparent');
-            nav.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-            nav.style.backdropFilter = 'none';
-            nav.style.borderBottom = '1px solid transparent';
+            // 移动端：保持白色背景
+            if (window.innerWidth <= 768) {
+                nav.classList.remove('transparent');
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 1)';
+                nav.style.backdropFilter = 'none';
+                nav.style.borderBottom = '1px solid rgba(0, 0, 0, 0.08)';
+                // 确保没有transform动画
+                nav.style.transform = 'none';
+            } else {
+                // 桌面端逻辑保持不变
+                nav.classList.add('transparent');
+                nav.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                nav.style.backdropFilter = 'none';
+                nav.style.borderBottom = '1px solid transparent';
+            }
             
             // 如果是移动端，更新导航链接
             if (window.innerWidth <= 768) {
@@ -230,22 +252,25 @@ function initNavigation() {
         });
     }
     
-    // 页面加载完成后，如果用户没有滑动，设置10秒延迟显示导航栏（仅桌面端）
+    // 页面加载完成后
     window.addEventListener('load', function() {
-        // 只有桌面端才执行10秒自动显示
-        if (window.innerWidth > 768) {
+        // 移动端：不执行10秒自动显示，直接显示导航栏
+        if (window.innerWidth <= 768) {
+            nav.classList.remove('initial-hidden');
+            initialScrollTriggered = true;
+            updateMobileNavLinks();
+            // 移动端：确保导航栏完全可见，没有动画
+            nav.style.opacity = '1';
+            nav.style.visibility = 'visible';
+            nav.style.transform = 'none';
+        } else {
+            // 桌面端逻辑保持不变
             autoShowTimer = setTimeout(function() {
-                // 如果用户还没有滚动，显示导航栏文字和logo
                 if (!initialScrollTriggered) {
                     nav.classList.remove('initial-hidden');
                     initialScrollTriggered = true;
                 }
-            }, 10000); // 10秒后显示（10000毫秒）
-        }
-        
-        // 初始化移动端导航链接
-        if (window.innerWidth <= 768) {
-            updateMobileNavLinks();
+            }, 10000);
         }
     });
     
@@ -270,6 +295,9 @@ function initNavigation() {
             updateMobileNavLinks();
             // 移动端隐藏箭头
             nav.classList.remove('at-bottom');
+            // 移动端：确保导航栏没有动画
+            nav.style.transition = 'none';
+            nav.style.transform = 'none';
         } else {
             // 桌面端：恢复原始链接
             const originalLinks = `
