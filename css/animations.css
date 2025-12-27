@@ -236,18 +236,43 @@ nav.transparent .nav-links a:hover {
 
 /* ==================== 移动端触摸优化 ==================== */
 /* 目的：在触摸设备上优化悬停效果，使用:active状态替代 */
-@media (hover: none) and (pointer: coarse) {
-    /* 导航链接触摸优化 */
+@media (max-width: 768px) {
+    /* 手机端简化所有动画 */
+    nav,
+    nav.transparent,
+    .nav-links a,
+    .portfolio-item,
+    .portfolio-overlay,
+    .filter-btn,
+    .portfolio-overlay .btn,
+    .category-more-link a,
+    .social-links a,
+    .hero h1,
+    .hero p,
+    .section-title,
+    .reveal {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    /* 导航链接触摸优化 - 简化 */
     .nav-links a {
-        transition: all 0.2s ease !important;
+        transition: color 0.1s ease !important;
     }
     
-    .nav-links a:active {
-        background-color: rgba(0, 0, 0, 0.05) !important;
-        transform: scale(0.98) !important;
+    .nav-links a::after {
+        display: none !important; /* 手机端隐藏下划线动画 */
     }
     
-    /* 分类按钮触摸优化 */
+    /* 分类按钮触摸优化 - 简化 */
+    .filter-btn {
+        transition: background-color 0.1s ease !important;
+    }
+    
+    .filter-btn::after {
+        display: none !important; /* 手机端隐藏下划线 */
+    }
+    
     .filter-btn:hover:not(.active) {
         background-color: transparent;
         transform: none;
@@ -257,23 +282,24 @@ nav.transparent .nav-links a:hover {
     
     .filter-btn:active:not(.active) {
         background-color: #f5f5f5 !important;
-        transform: scale(0.96) !important; /* 触摸设备使用缩放效果 */
-        transition: all 0.1s ease !important;
+        transform: scale(0.96) !important;
     }
     
     .filter-btn.active:active {
         transform: scale(0.98) !important;
-        transition: all 0.1s ease !important;
     }
     
-    /* 作品项触摸优化 */
+    /* 作品项触摸优化 - 简化 */
     .portfolio-item:active {
         transform: scale(0.99) !important;
-        transition: transform 0.1s ease !important;
     }
     
-    .portfolio-overlay .btn:hover {
-        transform: none;
+    .portfolio-overlay .btn {
+        transition: background-color 0.1s ease !important;
+    }
+    
+    .portfolio-overlay .btn::after {
+        display: none !important; /* 手机端隐藏下划线 */
     }
     
     .portfolio-overlay .btn:active {
@@ -281,10 +307,14 @@ nav.transparent .nav-links a:hover {
         background: rgba(255, 255, 255, 0.3) !important;
     }
     
-    .category-more-link a:hover,
-    .baidu-link a:hover {
-        transform: none !important;
-        letter-spacing: 1.1px;
+    .category-more-link a,
+    .baidu-link a {
+        transition: background-color 0.1s ease !important;
+    }
+    
+    .category-more-link a::after,
+    .baidu-link a::after {
+        display: none !important; /* 手机端隐藏下划线 */
     }
     
     .category-more-link a:active,
@@ -293,10 +323,42 @@ nav.transparent .nav-links a:hover {
         background: rgba(51, 51, 51, 0.1) !important;
     }
     
-    /* 社交链接触摸优化 */
+    /* 社交链接触摸优化 - 简化 */
     .social-links a:active {
         transform: scale(0.9) !important;
         background-color: rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    /* 简化页面加载动画 */
+    .hero h1,
+    .hero p,
+    .hero .btn {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    /* 简化滚动显示动画 */
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .reveal.active {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    /* 简化标题下划线动画 */
+    .section-title::after {
+        transition: none !important;
+        width: 28px !important; /* 70px * 40% = 28px */
+        opacity: 1 !important;
+    }
+    
+    .section-title.animated::after {
+        width: 28px !important;
     }
 }
 
@@ -427,14 +489,14 @@ nav.transparent .nav-links a:hover {
 /* 移动端图片优化 */
 @media (max-width: 768px) {
     .contact-info img {
-        max-width: 200px !important;
-        margin: 15px auto !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
+        max-width: 72px !important; /* 200px * 40% = 80px，调整为72px */
+        margin: 6px auto !important; /* 15px * 40% = 6px */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
     }
 }
 
 /* 取消触摸效果 */
-@media (hover: none) and (pointer: coarse) {
+@media (max-width: 768px) {
     .contact-info img:active {
         transform: none !important;
         opacity: 0.9 !important; /* 轻微反馈 */

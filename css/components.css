@@ -122,132 +122,92 @@ nav.transparent .logo-image {
 /* 目的：在移动设备上提供全屏汉堡菜单，保持与桌面端一致的体验 */
 
 @media (max-width: 768px) {
-    /* 移动端导航栏优化 */
+    /* 移动端导航栏优化 - 始终显示导航链接 */
     nav {
-        padding: 18px 0 !important; /* 减少内边距 */
-        height: 70px !important; /* 固定高度便于点击 */
+        padding: 10px 0 !important; /* 26px * 40% ≈ 10px */
+        height: auto !important; /* 自动高度 */
     }
     
     .nav-container {
         padding: 0 20px !important; /* 减少左右内边距 */
-        height: 100%;
+        height: auto !important;
+        flex-direction: row !important; /* 保持水平布局 */
+        justify-content: space-between !important;
     }
     
     .logo-image {
-        width: 32px !important;
-        height: 32px !important;
+        width: 16px !important; /* 40px * 40% = 16px */
+        height: 16px !important; /* 40px * 40% = 16px */
     }
     
     .logo {
-        font-size: 26px !important; /* 适当减小字体 */
+        font-size: 11.2px !important; /* 28px * 40% = 11.2px */
         font-weight: 300; /* 保持300字重 */
     }
     
-    /* 隐藏桌面端导航，显示汉堡菜单 */
+    /* 移动端导航链接始终显示 */
     .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.99);
-        backdrop-filter: blur(15px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        transform: translateY(-100%);
-        opacity: 0;
-        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                    opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        z-index: 999;
-        pointer-events: none;
-    }
-
-    .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: all;
+        display: flex !important; /* 始终显示 */
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        background-color: transparent !important;
+        backdrop-filter: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+        transition: none !important;
+        gap: 10px !important; /* 48px * 40% ≈ 19px，这里调整为10px */
     }
 
     .nav-links a {
-        font-size: 2.2rem !important; /* 适当减小字体 */
-        padding: 14px 24px;
-        color: #222;
-        opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                    color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        min-width: 200px; /* 确保足够的点击区域 */
-        text-align: center;
-        border-radius: 10px; /* 修改：圆角统一为10px */
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        font-weight: 300; /* 修改：与桌面端一致 */
+        font-size: 8px !important; /* 28px * 40% = 11.2px，调整为8px */
+        padding: 3.2px 0 !important; /* 8px * 40% = 3.2px */
+        color: #555 !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        min-width: auto !important;
+        text-align: center !important;
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        background: transparent !important;
+        box-shadow: none !important;
+        font-weight: 300 !important;
     }
     
-    .nav-links a:hover {
-        background: rgba(255, 255, 255, 0.95);
-        transform: translateY(-2px);
+    /* 导航栏透明状态下的移动端链接颜色 */
+    nav.transparent .nav-links a {
+        color: #fff !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
     }
-
-    /* 交错动画效果 */
+    
+    nav.transparent .logo {
+        color: #fff !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+    }
+    
+    nav.transparent .logo-image {
+        filter: brightness(1.2) !important;
+    }
+    
+    /* 隐藏汉堡菜单按钮 */
+    .mobile-menu-btn {
+        display: none !important;
+    }
+    
+    /* 交错动画效果 - 移除 */
     .nav-links.active a {
-        opacity: 1;
-        transform: translateY(0);
-        transition-delay: calc(0.08s * var(--i));
+        opacity: 1 !important;
+        transform: none !important;
+        transition-delay: 0s !important;
     }
     
     /* 移动端间距优化 */
     .nav-links {
-        gap: 24px;
-    }
-    
-    /* 汉堡菜单按钮优化 - 增大点击区域 */
-    .mobile-menu-btn {
-        display: block !important;
-        position: relative;
-        z-index: 1000;
-        background: none;
-        border: none;
-        width: 36px;
-        height: 36px;
-        cursor: pointer;
-        padding: 8px;
-        border-radius: 10px; /* 修改：圆角统一为10px */
-        background: rgba(0, 0, 0, 0.05);
-    }
-    
-    nav.transparent .mobile-menu-btn {
-        background: rgba(255, 255, 255, 0.2);
-    }
-    
-    nav.transparent .mobile-menu-btn span {
-        background-color: #fff;
-    }
-
-    .mobile-menu-btn span {
-        display: block;
-        width: 100%;
-        height: 2px;
-        background-color: #222;
-        margin: 4px 0;
-        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    /* 汉堡菜单动画状态 */
-    .mobile-menu-btn.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .mobile-menu-btn.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .mobile-menu-btn.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -5px);
+        gap: 8px !important; /* 进一步减小间距 */
     }
 }
 
@@ -289,26 +249,26 @@ nav.transparent .logo-image {
         background-attachment: scroll !important;
         aspect-ratio: 3/4 !important; /* 更适合竖屏 */
         padding-bottom: 100% !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
-        margin-bottom: 30px !important;
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        margin-bottom: 12px !important; /* 30px * 40% = 12px */
     }
     
     .hero-content {
-        padding: 40px 20px !important;
+        padding: 16px 8px !important; /* 40px * 40% = 16px, 20px * 40% = 8px */
         justify-content: flex-start !important;
-        padding-top: 80px !important;
+        padding-top: 32px !important; /* 80px * 40% = 32px */
     }
     
     .hero h1 {
-        font-size: 2.8rem !important;
-        margin-bottom: 15px !important;
+        font-size: 1.12rem !important; /* 2.8rem * 40% = 1.12rem */
+        margin-bottom: 6px !important; /* 15px * 40% = 6px */
         line-height: 1.3 !important;
         font-weight: 400;
     }
     
     .hero p {
-        font-size: 1.6rem !important;
-        margin-bottom: 20px !important;
+        font-size: 0.64rem !important; /* 1.6rem * 40% = 0.64rem */
+        margin-bottom: 8px !important; /* 20px * 40% = 8px */
         line-height: 1.5 !important;
         max-width: 90% !important;
         /* 中文内容使用中文无衬线字体 */
@@ -458,55 +418,55 @@ nav.transparent .logo-image {
 /* 移动端作品网格优化 */
 @media (max-width: 768px) {
     .portfolio {
-        padding: 50px 0 !important;
+        padding: 20px 0 !important; /* 50px * 40% = 20px */
     }
     
     .portfolio-filters-container {
-        margin-bottom: 30px !important;
+        margin-bottom: 12px !important; /* 30px * 40% = 12px */
     }
     
     .portfolio-container {
-        padding: 30px 20px !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
-        margin: 0 10px !important;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important; /* 移动端阴影稍小 */
+        padding: 12px 8px !important; /* 30px * 40% = 12px, 20px * 40% = 8px */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        margin: 0 4px !important; /* 10px * 40% = 4px */
+        box-shadow: 0 2.4px 8px rgba(0, 0, 0, 0.08) !important; /* 移动端阴影稍小 */
     }
     
     .portfolio-grid {
         grid-template-columns: 1fr !important;
-        gap: 20px !important; /* 移动端间距稍小 */
-        margin-bottom: 24px !important;
+        gap: 8px !important; /* 20px * 40% = 8px */
+        margin-bottom: 9.6px !important; /* 24px * 40% = 9.6px */
     }
     
     .portfolio-item {
         aspect-ratio: 1/1 !important; /* 修改：固定1:1比例 */
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        box-shadow: 0 1.6px 4.8px rgba(0, 0, 0, 0.1) !important; /* 4px * 40% = 1.6px, 12px * 40% = 4.8px */
     }
     
     .portfolio-overlay {
-        padding: 20px !important;
+        padding: 8px !important; /* 20px * 40% = 8px */
         background-color: rgba(0, 0, 0, 0.9) !important; /* 修改：移动端透明度为0.9 */
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
         opacity: 0.95 !important; /* 移动端默认显示覆盖层 */
     }
     
     .portfolio-overlay h3 {
-        font-size: 1.8rem !important; /* 适当减小 */
-        margin-bottom: 8px !important;
+        font-size: 0.72rem !important; /* 1.8rem * 40% = 0.72rem */
+        margin-bottom: 3.2px !important; /* 8px * 40% = 3.2px */
     }
     
     .portfolio-overlay p {
-        font-size: 1.4rem !important; /* 适当减小 */
-        margin-bottom: 12px !important;
+        font-size: 0.56rem !important; /* 1.4rem * 40% = 0.56rem */
+        margin-bottom: 4.8px !important; /* 12px * 40% = 4.8px */
         /* 中文内容使用中文无衬线字体 */
         font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
     }
     
     .portfolio-overlay .btn {
-        font-size: 1.6rem !important; /* 适当减小 */
-        padding: 10px 20px !important;
-        margin-top: 12px !important;
+        font-size: 0.64rem !important; /* 1.6rem * 40% = 0.64rem */
+        padding: 4px 8px !important; /* 10px * 40% = 4px, 20px * 40% = 8px */
+        margin-top: 4.8px !important; /* 12px * 40% = 4.8px */
     }
 }
 
@@ -584,26 +544,26 @@ nav.transparent .logo-image {
 /* 移动端悬停效果调整 */
 @media (hover: none) and (pointer: coarse) {
     .portfolio-overlay {
-        padding: 20px;
+        padding: 8px; /* 20px * 40% = 8px */
         background-color: rgba(0, 0, 0, 0.85);
         opacity: 0.95 !important; /* 移动端默认显示覆盖层 */
     }
     
     .portfolio-overlay h3 {
-        font-size: 1.8rem !important;
-        margin-bottom: 8px !important;
+        font-size: 0.72rem !important; /* 1.8rem * 40% = 0.72rem */
+        margin-bottom: 3.2px !important; /* 8px * 40% = 3.2px */
     }
     
     .portfolio-overlay p {
-        font-size: 1.4rem !important;
-        margin-bottom: 12px !important;
+        font-size: 0.56rem !important; /* 1.4rem * 40% = 0.56rem */
+        margin-bottom: 4.8px !important; /* 12px * 40% = 4.8px */
     }
     
     .portfolio-overlay .btn {
-        font-size: 1.6rem !important;
-        padding: 10px 20px !important;
+        font-size: 0.64rem !important; /* 1.6rem * 40% = 0.64rem */
+        padding: 4px 8px !important; /* 10px * 40% = 4px, 20px * 40% = 8px */
         background: rgba(255, 255, 255, 0.2) !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
     }
 }
 
@@ -621,12 +581,12 @@ nav.transparent .logo-image {
 /* 移动端分类筛选优化 */
 @media (max-width: 768px) {
     .portfolio-filters {
-        gap: 12px !important;
+        gap: 4.8px !important; /* 12px * 40% = 4.8px */
         flex-wrap: nowrap !important; /* 保持横向排列 */
         overflow-x: auto !important; /* 允许横向滚动 */
         justify-content: flex-start !important; /* 左对齐 */
-        padding: 10px 0 15px !important;
-        margin-bottom: 24px !important;
+        padding: 4px 0 6px !important; /* 10px * 40% = 4px, 15px * 40% = 6px */
+        margin-bottom: 9.6px !important; /* 24px * 40% = 9.6px */
         -webkit-overflow-scrolling: touch !important; /* 触摸设备平滑滚动 */
         scrollbar-width: none !important; /* 隐藏滚动条 */
     }
@@ -637,10 +597,10 @@ nav.transparent .logo-image {
     
     .filter-btn {
         flex-shrink: 0 !important; /* 防止按钮缩小 */
-        padding: 10px 18px !important;
-        font-size: 1.8rem !important; /* 适当减小 */
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
-        min-height: 50px !important; /* 增大触摸区域 */
+        padding: 4px 7.2px !important; /* 10px * 40% = 4px, 18px * 40% = 7.2px */
+        font-size: 0.72rem !important; /* 1.8rem * 40% = 0.72rem */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        min-height: 20px !important; /* 50px * 40% = 20px */
         border-width: 0 !important; /* 取消边框 */
         /* 中文内容使用中文无衬线字体 */
         font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
@@ -649,13 +609,13 @@ nav.transparent .logo-image {
 
 @media (max-width: 480px) {
     .portfolio-filters {
-        gap: 10px !important;
+        gap: 4px !important; /* 10px * 40% = 4px */
     }
     
     .filter-btn {
-        padding: 8px 16px !important;
-        font-size: 1.6rem !important;
-        min-height: 46px !important;
+        padding: 3.2px 6.4px !important; /* 8px * 40% = 3.2px, 16px * 40% = 6.4px */
+        font-size: 0.64rem !important; /* 1.6rem * 40% = 0.64rem */
+        min-height: 18.4px !important; /* 46px * 40% = 18.4px */
     }
 }
 
@@ -681,22 +641,22 @@ nav.transparent .logo-image {
 
 @media (max-width: 768px) {
     .category-more-link {
-        margin-top: 32px !important;
-        margin-bottom: 20px !important;
+        margin-top: 12.8px !important; /* 32px * 40% = 12.8px */
+        margin-bottom: 8px !important; /* 20px * 40% = 8px */
     }
     
     .category-more-link a {
-        font-size: 1.8rem !important;
-        padding: 12px 0 !important;
-        min-height: 50px !important;
+        font-size: 0.72rem !important; /* 1.8rem * 40% = 0.72rem */
+        padding: 4.8px 0 !important; /* 12px * 40% = 4.8px */
+        min-height: 20px !important; /* 50px * 40% = 20px */
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         width: 100% !important;
-        max-width: 300px !important;
+        max-width: 120px !important; /* 300px * 40% = 120px */
         background: rgba(51, 51, 51, 0.05) !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
-        padding: 12px 20px !important;
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        padding: 4.8px 8px !important; /* 12px * 40% = 4.8px, 20px * 40% = 8px */
         /* 中文内容使用中文无衬线字体 */
         font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
     }
@@ -759,38 +719,38 @@ nav.transparent .logo-image {
 /* 移动端联系信息容器优化 */
 @media (max-width: 768px) {
     .contact-info-container {
-        padding: 24px 20px !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
-        margin: 0 10px !important;
+        padding: 12.8px 8px !important; /* 32px * 40% = 12.8px, 40px * 40% = 16px，调整为8px */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        margin: 0 4px !important; /* 10px * 40% = 4px */
     }
     
     .contact-info p {
-        font-size: 1.8rem !important; /* 适当减小 */
+        font-size: 0.72rem !important; /* 1.8rem * 40% = 0.72rem */
         line-height: 1.7 !important;
-        margin-bottom: 12px !important;
+        margin-bottom: 4.8px !important; /* 12px * 40% = 4.8px */
     }
     
     .contact-info img {
-        max-width: 200px !important;
-        margin: 15px auto !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        max-width: 72px !important; /* 200px * 40% = 80px，调整为72px */
+        margin: 6px auto !important; /* 15px * 40% = 6px */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        box-shadow: 0 1.6px 4.8px rgba(0, 0, 0, 0.1) !important; /* 4px * 40% = 1.6px, 12px * 40% = 4.8px */
     }
 }
 
 @media (max-width: 480px) {
     .contact-info-container {
-        padding: 20px 16px !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
+        padding: 8px 6.4px !important; /* 20px * 40% = 8px, 16px * 40% = 6.4px */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
     }
     
     .contact-info p {
-        font-size: 1.6rem !important;
+        font-size: 0.64rem !important; /* 1.6rem * 40% = 0.64rem */
     }
     
     .contact-info img {
-        max-width: 180px !important;
-        margin: 12px auto !important;
+        max-width: 64.8px !important; /* 180px * 40% = 72px，调整为64.8px */
+        margin: 4.8px auto !important; /* 12px * 40% = 4.8px */
     }
 }
 
@@ -911,67 +871,69 @@ footer {
 @media (max-width: 768px) {
     footer {
         background-attachment: scroll !important;
-        height: 280px !important; /* 相应调整 */
-        min-height: 280px !important;
-        max-height: 280px !important;
-        border-radius: 10px !important; /* 修改：圆角统一为10px */
-        margin-top: 20px !important;
+        height: 112px !important; /* 280px * 40% = 112px */
+        min-height: 112px !important;
+        max-height: 112px !important;
+        border-radius: 4px !important; /* 10px * 40% = 4px */
+        margin-top: 8px !important; /* 20px * 40% = 8px */
     }
     
     .footer-content {
-        padding: 30px 20px 20px !important;
+        padding: 12px 8px 8px !important; /* 30px * 40% = 12px, 20px * 40% = 8px, 20px * 40% = 8px */
     }
     
     .footer-logo-placeholder {
-        height: 30px !important;
-        margin-bottom: 20px !important;
+        height: 12px !important; /* 30px * 40% = 12px */
+        margin-bottom: 8px !important; /* 20px * 40% = 8px */
     }
     
     .social-links {
-        margin: 15px 0 !important;
-        gap: 15px !important;
+        margin: 6px 0 !important; /* 15px * 40% = 6px */
+        gap: 6px !important; /* 15px * 40% = 6px */
     }
     
     .social-links a {
-        width: 42px !important;
-        height: 42px !important;
-        font-size: 1.2rem !important;
+        width: 16.8px !important; /* 42px * 40% = 16.8px */
+        height: 16.8px !important; /* 42px * 40% = 16.8px */
+        font-size: 0.48rem !important; /* 1.2rem * 40% = 0.48rem */
+        border-radius: 4px !important; /* 10px * 40% = 4px */
     }
     
     .footer-copyright {
-        margin-top: 15px !important;
-        padding-top: 12px !important;
-        font-size: 0.45rem !important; /* 移动端进一步缩小 */
+        margin-top: 6px !important; /* 15px * 40% = 6px */
+        padding-top: 4.8px !important; /* 12px * 40% = 4.8px */
+        font-size: 0.18rem !important; /* 0.45rem * 40% = 0.18rem */
         line-height: 1.4 !important;
         max-width: 90% !important;
+        padding-bottom: 36px !important; /* 90px * 40% = 36px */
     }
 }
 
 @media (max-width: 480px) {
     footer {
-        height: 250px !important;
-        min-height: 250px !important;
-        max-height: 250px !important;
+        height: 100px !important; /* 250px * 40% = 100px */
+        min-height: 100px !important;
+        max-height: 100px !important;
     }
     
     .footer-content {
-        padding: 25px 16px 15px !important;
+        padding: 10px 6.4px 6px !important; /* 25px * 40% = 10px, 16px * 40% = 6.4px, 15px * 40% = 6px */
     }
     
     .social-links {
-        margin: 12px 0 !important;
-        gap: 12px !important;
+        margin: 4.8px 0 !important; /* 12px * 40% = 4.8px */
+        gap: 4.8px !important; /* 12px * 40% = 4.8px */
     }
     
     .social-links a {
-        width: 38px !important;
-        height: 38px !important;
-        font-size: 1.1rem !important;
+        width: 15.2px !important; /* 38px * 40% = 15.2px */
+        height: 15.2px !important; /* 38px * 40% = 15.2px */
+        font-size: 0.44rem !important; /* 1.1rem * 40% = 0.44rem */
     }
     
     .footer-copyright {
-        margin-top: 12px !important;
-        padding-top: 10px !important;
-        font-size: 0.4rem !important;
+        margin-top: 4.8px !important; /* 12px * 40% = 4.8px */
+        padding-top: 4px !important; /* 10px * 40% = 4px */
+        font-size: 0.16rem !important; /* 0.4rem * 40% = 0.16rem */
     }
 }
