@@ -218,7 +218,7 @@ nav.transparent .nav-links a:hover {
 
 /* ==================== 移动端触摸优化 ==================== */
 @media (max-width: 768px) {
-    /* 简化移动端所有动画 */
+    /* 简化移动端所有动画 - 但保留基本交互 */
     nav,
     nav.transparent,
     .nav-links a,
@@ -238,7 +238,7 @@ nav.transparent .nav-links a:hover {
     
     /* 简化导航链接交互 */
     .nav-links a {
-        transition: color 0.2s ease !important;
+        transition: none !important;
     }
     
     .nav-links a::after {
@@ -247,7 +247,7 @@ nav.transparent .nav-links a:hover {
     
     /* 简化按钮交互 */
     .filter-btn {
-        transition: background-color 0.2s ease !important;
+        transition: none !important;
     }
     
     .filter-btn::after {
@@ -276,7 +276,7 @@ nav.transparent .nav-links a:hover {
     }
     
     .portfolio-overlay .btn {
-        transition: background-color 0.2s ease !important;
+        transition: none !important;
     }
     
     .portfolio-overlay .btn::after {
@@ -291,7 +291,7 @@ nav.transparent .nav-links a:hover {
     /* 简化链接交互 */
     .category-more-link a,
     .baidu-link a {
-        transition: background-color 0.2s ease !important;
+        transition: none !important;
     }
     
     .category-more-link a::after,

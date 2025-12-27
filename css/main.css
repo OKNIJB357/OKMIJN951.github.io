@@ -219,7 +219,11 @@ a {
         height: 2px !important;
     }
     
-    /* 关于我们移动端优化 */
+    /* 关于我们移动端优化 - 统一间距 */
+    .about {
+        padding: 2rem 0 !important; /* 统一间距 */
+    }
+    
     .about-container {
         padding: 2rem 1.5rem !important;
         border-radius: 8px !important;
@@ -248,48 +252,12 @@ a {
         aspect-ratio: 1/1 !important;
     }
     
-    /* 首页横幅移动端优化 */
-    .hero {
-        aspect-ratio: 4/3 !important;
-        padding-bottom: 75% !important;
-        border-radius: 0 !important;
-        margin-bottom: 2rem !important;
-    }
+    /* 首页横幅移动端优化 - 已在上方components.css中修改 */
+    /* 这里只需要确保全局样式正确 */
     
-    .hero-content {
-        padding: 0 24px !important;
-    }
+    /* 作品集移动端优化 - 已在上方components.css中修改，这里只需要确保全局样式正确 */
     
-    .hero h1 {
-        font-size: 2rem !important;
-        margin-bottom: 1rem !important;
-        line-height: 1.2 !important;
-    }
-    
-    .hero p {
-        font-size: 1rem !important;
-        margin-bottom: 1rem !important;
-        line-height: 1.5 !important;
-    }
-    
-    /* 作品集移动端优化 */
-    .portfolio {
-        padding: 3rem 0 !important;
-    }
-    
-    .portfolio-container {
-        padding: 2rem 1.5rem !important;
-        border-radius: 8px !important;
-        margin: 0 !important;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05) !important;
-    }
-    
-    /* 联系我们移动端优化 */
-    .contact-info p {
-        font-size: 1rem !important;
-        line-height: 1.6 !important;
-        margin-bottom: 1rem !important;
-    }
+    /* 联系我们移动端优化 - 已在上方components.css中修改，这里只需要确保全局样式正确 */
 }
 
 /* 超小屏幕进一步优化 */
